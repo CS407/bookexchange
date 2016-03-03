@@ -1,6 +1,12 @@
 package com.cs407.bookexchange.db;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
+import org.json.*;
 
 /**
  * Created by ssunny7 on 2/29/2016.
@@ -32,7 +38,30 @@ public class Read {
     }
 
     private static ArrayList<User> getUserSet(String[] params) {
-        ArrayList<User> userSet = null;
+        ArrayList<User> userSet = new ArrayList<User>();
+
+        try {
+            //append to string all the params of the query
+            String targetUrl = Constants.urlReadUser;
+            URL userGetUrl = new URL(targetUrl);
+            HttpURLConnection urlConnection = (HttpURLConnection)userGetUrl.openConnection();
+            urlConnection.setDoOutput(true);
+
+            InputStreamReader connReader = new InputStreamReader(urlConnection.getInputStream());
+
+            if(urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                //read data and parse JSON
+            } else {
+                return null;
+            }
+
+            connReader.close();
+            urlConnection.disconnect();
+        } catch (MalformedURLException murle) {
+            return null;
+        } catch (IOException ioe) {
+            return null;
+        }
 
         return userSet;
     }
