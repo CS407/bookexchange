@@ -18,6 +18,11 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UserUI.login" />
+        <activity
+            android:name=".UserUI.login$register"
+            android:label="@string/title_activity_register"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UserUI.registeractivity"></activity>
     </application>
 
 </manifest>

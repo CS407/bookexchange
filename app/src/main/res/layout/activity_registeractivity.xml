@@ -7,22 +7,40 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.cs407.bookexchange.UserUI.login">
-
+    tools:context="com.cs407.bookexchange.UserUI.registeractivity">
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/username"
         android:hint="UserName"
         android:layout_gravity="left"
-        android:layout_above="@+id/password"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/emailAddress" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/emailAddress"
+        android:layout_below="@+id/password"
+        android:layout_alignLeft="@+id/username"
+        android:layout_alignStart="@+id/username" />
+    <EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/password"
+    android:hint="Enter a 6-digit password"
+    android:layout_gravity="left"
+        android:layout_above="@+id/emailAddress"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/password"
-        android:hint="Password"
+        android:id="@+id/reenterpassword"
+        android:layout_above="@+id/password"
+        android:hint="Reenter password"
         android:layout_gravity="left"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
@@ -30,9 +48,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login In"
-        android:id="@+id/loginButton1"
+        android:text="Register"
+        android:id="@+id/registerButton1"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="163dp" />
+
+
 </RelativeLayout>
