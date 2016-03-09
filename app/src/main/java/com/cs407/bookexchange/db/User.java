@@ -73,4 +73,17 @@ public class User {
     public void set_zip(int _zip) {
         this._zip = _zip;
     }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(TableDefs.Users.COLUMN_NAME + ":" + _name);
+        sb.append(TableDefs.Users.COLUMN_EMAIL + ":" + _email);
+        sb.append(TableDefs.Users.COLUMN_PHONE + ":" + _phone);
+        sb.append(TableDefs.Users.COLUMN_ZIPCODE + ":" + _zip);
+        sb.append(TableDefs.Users.COLUMN_USERNAME + ":" + _username);
+
+        return sb.toString();
+    }
 }
+

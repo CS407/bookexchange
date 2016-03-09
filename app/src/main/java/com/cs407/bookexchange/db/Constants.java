@@ -30,4 +30,7 @@ public class Constants {
     public static String urlDeleteUser = "";
     public static String urlDeleteBuyer = "";
     public static String urlDeleteSeller = "";
+
+    public static String RESPONSE_KEY_SUCCESS = "success";
+    public static String RESPONSE_KEY_VALS = "vals";
 }
