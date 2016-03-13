@@ -11,10 +11,10 @@ import android.widget.Toast;
 import com.cs407.bookexchange.R;
 
 public class registeractivity extends AppCompatActivity {
-    String username;
-    String email;
-    String password;
-    String password2;
+    private String username;
+    private String email;
+    private String password;
+    private String password2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,4 +46,15 @@ public class registeractivity extends AppCompatActivity {
             }
         });
     }
+
+    public String getUsername(){
+        return username;
+    }
+    public String getEmail(){
+        return email;
+    }
+    public String getPassword() {
+        return password;
+    }
+
 }
