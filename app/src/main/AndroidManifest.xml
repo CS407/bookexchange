@@ -17,12 +17,17 @@
             android:name=".UserUI.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
-        <intent-filter >
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>/></activity>
-        <activity android:name=".UserUI.login" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            />
+        </activity>
+        <activity android:name=".UserUI.login" />
+        <activity android:name=".UserUI.seller_manager_activity" />
+        <activity android:name=".UserUI.search_activity" />
+        <activity android:name=".UserUI.new_listing_activity"></activity>
     </application>
 
 </manifest>
