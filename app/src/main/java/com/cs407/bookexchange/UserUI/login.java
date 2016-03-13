@@ -16,11 +16,11 @@ Button checkButton;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         checkButton =(Button)findViewById(R.id.registerButton);
-        checkButton.setOnClickListener(new View.OnClickListener() {
+        /*checkButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //how to check userinfo
+                //Intent i = new Intent
             }
-        });
+        });*/
     }
 
 }
