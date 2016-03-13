@@ -9,14 +9,14 @@ import android.widget.Button;
 import com.cs407.bookexchange.R;
 
 public class seller_manager_activity extends AppCompatActivity {
-    Button addnewButton;
+    Button addbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller_manager_activity);
 
-        addnewButton =(Button)findViewById(R.id.addbutton);
-        addnewButton.setOnClickListener(new View.OnClickListener() {
+        addbtn =(Button)findViewById(R.id.addbtn);
+        addbtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent in = new Intent(getApplicationContext(), new_listing_activity.class);
                 startActivity(in);

@@ -20,7 +20,6 @@ public class registeractivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registeractivity);
 
-
         Button checkButton =(Button)findViewById(R.id.registerButton);
         checkButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -40,6 +39,7 @@ public class registeractivity extends AppCompatActivity {
                     finish();
                 }
                 else{
+
                     Toast.makeText(getBaseContext(), "Passwords do not match",
                             Toast.LENGTH_SHORT).show();
                 }

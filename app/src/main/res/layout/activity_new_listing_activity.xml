@@ -87,6 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/edityear"
+            android:inputType="number"
             android:layout_above="@+id/editEdition"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
@@ -120,25 +121,25 @@
             android:layout_above="@+id/textView5"
             android:id="@+id/textView6"
             />
-
-        <Spinner
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:id="@+id/editdept"
-            android:layout_centerVertical="true"
-            android:entries="@array/Deptnumber"/>
+            android:layout_above="@+id/editcondition"
+            android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView"
+            android:layout_marginTop="53dp" />
 
-
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Class Number"
-        android:layout_above="@+id/textView6"
-        android:id="@+id/textView7"
-    />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Class Number"
+            android:layout_above="@+id/textView6"
+            android:id="@+id/textView7"
+        />
 
         <EditText
             android:layout_width="wrap_content"
