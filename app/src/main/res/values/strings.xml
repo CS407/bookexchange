@@ -17,10 +17,11 @@
         completions."
     </string>
     <string name="title_activity_register">register</string>
-    <string name="username">UserName</string>
-    <string name="password">Enter a 6-digit password</string>
-    <string name="reenterpassword">Reenter password</string>
-    <string name="registerButton1">Register</string>
-    <string name="loginButton">Login</string>
-    <string name="registerButton">Register</string>
+
+
+
+
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="loginButton1">loginButton1</string>
 </resources>
