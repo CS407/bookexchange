@@ -30,6 +30,7 @@ public class new_listing_activity extends AppCompatActivity {
                 Intent in = new Intent(getApplicationContext(), seller_manager_activity.class);
                 startActivity(in);
 
+
             }
         });
     }
