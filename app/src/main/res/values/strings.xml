@@ -18,13 +18,13 @@
     </string>
     <string name="title_activity_register">register</string>
 
-<String-array name ="Dept number">
+<string-array name="Deptnumber">
     <item> computer sciences</item>
     <item> english</item>
     <item> american indian studies</item>
     <item> linguistic</item>
 
-</String-array>
+</string-array>
     <string name="username">username</string>
     <string name="password">password</string>
     <string name="loginButton1">loginButton1</string>
