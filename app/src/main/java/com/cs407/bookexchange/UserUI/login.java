@@ -30,7 +30,7 @@ Button checkButton;
                 password = userPass.getText().toString();
                 Toast.makeText(getBaseContext(),"Logged In as " + username,
                         Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                Intent i = new Intent(getApplicationContext(),search_activity.class);
                 startActivity(i);
             }
         });
