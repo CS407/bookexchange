@@ -25,6 +25,7 @@
             />
         </activity>
         <activity android:name=".UserUI.login" />
+        <activity android:name=".UserUI.registeractivity" />
         <activity android:name=".UserUI.seller_manager_activity" />
         <activity android:name=".UserUI.search_activity" />
         <activity android:name=".UserUI.new_listing_activity"></activity>
