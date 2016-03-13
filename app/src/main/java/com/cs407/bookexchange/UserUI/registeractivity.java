@@ -39,6 +39,10 @@ public class registeractivity extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 }
+                else{
+                    Toast.makeText(getBaseContext(), "Passwords do not match",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
