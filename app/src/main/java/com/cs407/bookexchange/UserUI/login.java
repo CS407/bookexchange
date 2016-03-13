@@ -28,10 +28,16 @@ Button checkButton;
                 EditText userPass = (EditText) findViewById(R.id.password);
                 username = userField.getText().toString();
                 password = userPass.getText().toString();
-                Toast.makeText(getBaseContext(),"Logged In as " + username,
-                        Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getApplicationContext(),search_activity.class);
-                startActivity(i);
+                if(username.equals("") || password.equals("")){
+                    Toast.makeText(getBaseContext(),"Please fill in both fields",
+                            Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(getBaseContext(),"Logged In as " + username,
+                            Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getApplicationContext(),search_activity.class);
+                    startActivity(i);
+                }
             }
         });
     }
