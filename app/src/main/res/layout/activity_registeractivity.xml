@@ -42,7 +42,7 @@
         android:inputType="numberPassword"
         android:id="@+id/reenterpassword"
         android:layout_above="@+id/password"
-        android:hint="@string/reenterpassword"
+        android:hint="please reenter password"
         android:layout_gravity="left"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
@@ -50,7 +50,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/registerButton1"
+        android:text="register"
         android:id="@+id/registerButton1"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

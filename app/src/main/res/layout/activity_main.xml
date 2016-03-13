@@ -19,7 +19,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/loginButton"
+        android:text="Login"
         android:id="@+id/loginButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -27,7 +27,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="register"
+        android:text="Register"
         android:id="@+id/registerButton"
         android:layout_above="@+id/loginButton"
         android:layout_alignLeft="@+id/loginButton"
