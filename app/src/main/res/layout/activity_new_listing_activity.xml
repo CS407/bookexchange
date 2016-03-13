@@ -9,10 +9,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.cs407.bookexchange.UserUI.new_listing_activity">
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout">
 
 
             <TextView
@@ -211,14 +212,13 @@
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
+    </RelativeLayout>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create"
         android:id="@+id/BTNcreatenewbook"
-        android:layout_alignBottom="@+id/button"
-        android:layout_toRightOf="@+id/editdept"
-        android:layout_toEndOf="@+id/editdept"
-        android:layout_marginBottom="105dp" />
-</LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
