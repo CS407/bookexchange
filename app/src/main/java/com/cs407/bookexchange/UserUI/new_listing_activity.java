@@ -9,16 +9,16 @@ import android.widget.Button;
 import com.cs407.bookexchange.R;
 
 public class new_listing_activity extends AppCompatActivity {
-    private String edittitle;
-    private String editauthor;
-    private String editedition;
-    private String edityear;
-    private String editcondition;
-    private String editDept;
-    private String editclassnum;
-    private String editcomments;
-    private Double editprice;
-    private long editISBN;
+    private String bookTitle;
+    private String author;
+    private String edition;
+    private String year;
+    private String condition;
+    private String dept;
+    private int classNum;
+    private String comments;
+    private Double price;
+    private long ISBN;
     private Button btncreate;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,5 +32,35 @@ public class new_listing_activity extends AppCompatActivity {
 
             }
         });
+    }
+    public String getBookTitle(){
+        return bookTitle;
+    }
+    public String getAuthor(){
+        return author;
+    }
+    public String getEdition(){
+        return edition;
+    }
+    public String getYear(){
+        return year;
+    }
+    public String getCondition(){
+        return condition;
+    }
+    public String getDept(){
+        return dept;
+    }
+    public int getClassnum(){
+        return classNum;
+    }
+    public String getComments(){
+        return comments;
+    }
+    public Double getPrice(){
+        return price;
+    }
+    public long getISBN(){
+        return ISBN;
     }
 }

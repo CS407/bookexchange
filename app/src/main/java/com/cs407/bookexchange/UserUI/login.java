@@ -14,8 +14,8 @@ import com.cs407.bookexchange.R;
 
 public class login extends AppCompatActivity {
 Button checkButton;
-    String username; //name that user entered for login
-    String password; //password that user entered
+    private String username; //name that user entered for login
+    private String password; //password that user entered
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,5 +35,10 @@ Button checkButton;
             }
         });
     }
-
+    public String getUsername(){
+        return username;
+    }
+    public String getPassword(){
+        return password;
+    }
 }
