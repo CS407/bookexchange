@@ -26,7 +26,7 @@ public class new_listing_activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_listing_activity);
-        btncreate =(Button)findViewById(R.id.loginButton);
+        btncreate =(Button)findViewById(R.id.BTNcreatenewbook);
         btncreate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent in = new Intent(getApplicationContext(), seller_manager_activity.class);
