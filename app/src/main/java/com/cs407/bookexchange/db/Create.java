@@ -56,7 +56,7 @@ public class Create {
 
             return postData.toString().getBytes("UTF-8");
         } catch (UnsupportedEncodingException uee) {
-            Log.d("[DB]", uee.getMessage());
+            Log.d("[DB] Unsup Encoding ", uee.getMessage());
             return null;
         }
     }
@@ -79,16 +79,19 @@ public class Create {
             byte[] postData = getPostBytes(params);
 
             urlConnection.setDoOutput(true);
+            urlConnection.setDoInput(true);
             urlConnection.setRequestMethod("POST");
             urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             urlConnection.setRequestProperty("Content-Length", String.valueOf(postData.length));
             OutputStream connWriter = urlConnection.getOutputStream();
             connWriter.write(postData);
+            connWriter.flush();
+            connWriter.close();
 
-            BufferedReader connReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             if(urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                connWriter.close();
+                BufferedReader connReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 
+                connReader.readLine(); connReader.readLine();
                 String response = connReader.readLine();
                 JSONObject respJson = new JSONObject(response);
                 String success = respJson.getString(Constants.RESPONSE_KEY_SUCCESS);
@@ -97,14 +100,14 @@ public class Create {
                 }
                 connReader.close();
             }
-            connReader.close();
+
             urlConnection.disconnect();
         } catch (MalformedURLException mulre) {
-            Log.d("[DB]", mulre.getMessage());
+            Log.d("[DB] Malformed URL ", mulre.getMessage());
         } catch (IOException ioe) {
-            Log.d("[DB]", ioe.getMessage());
+            Log.d("[DB] IO ", ioe.getMessage());
         } catch (JSONException jsoe) {
-            Log.d("[DB]", jsoe.getMessage());
+            Log.d("[DB] JSON ", jsoe.getMessage());
         }
 
         return retVal;
