@@ -8,18 +8,22 @@ import android.widget.Button;
 
 import com.cs407.bookexchange.R;
 
-public class seller_manager_activity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seller_manager_activity);
+        setContentView(R.layout.activity_search);
 
-        Button newListingButton =(Button)findViewById(R.id.addbtn);
-        newListingButton.setOnClickListener(new View.OnClickListener() {
+
+        Button managerButton =(Button)findViewById(R.id.managerButton);
+        managerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent in = new Intent(getApplicationContext(), new_listing_activity.class);
+                Intent in = new Intent(getApplicationContext(), SellerManagerActivity.class);
                 startActivity(in);
             }
         });
+
     }
+
 }

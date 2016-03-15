@@ -12,14 +12,14 @@ import android.widget.Toast;
 
 import com.cs407.bookexchange.R;
 
-public class login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 Button checkButton;
-    private String username; //name that user entered for login
+    private String username; //name that user entered for activity_login
     private String password; //password that user entered
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.activity_login);
 
         checkButton =(Button)findViewById(R.id.loginButton1);
         checkButton.setOnClickListener(new View.OnClickListener() {
@@ -35,7 +35,7 @@ Button checkButton;
                 else{
                     Toast.makeText(getBaseContext(),"Logged In as " + username,
                             Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(),search_activity.class);
+                    Intent i = new Intent(getApplicationContext(),SearchActivity.class);
                     startActivity(i);
                 }
             }

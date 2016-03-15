@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cs407.bookexchange">
 
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <!-- To auto-complete the email text field in the activity_login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".UserUI.MainActivity"
+            android:name=".UserUI.StartActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -24,11 +24,11 @@
             </intent-filter>
             />
         </activity>
-        <activity android:name=".UserUI.login" />
-        <activity android:name=".UserUI.registeractivity" />
-        <activity android:name=".UserUI.seller_manager_activity" />
-        <activity android:name=".UserUI.search_activity" />
-        <activity android:name=".UserUI.new_listing_activity"></activity>
+        <activity android:name=".UserUI.LoginActivity" />
+        <activity android:name=".UserUI.RegisterActivity" />
+        <activity android:name=".UserUI.SellerManagerActivity" />
+        <activity android:name=".UserUI.SearchActivity" />
+        <activity android:name=".UserUI.NewListingActivity"></activity>
     </application>
 
 </manifest>

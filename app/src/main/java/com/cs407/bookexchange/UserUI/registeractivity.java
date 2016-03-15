@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.cs407.bookexchange.R;
 
-public class registeractivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
     private String username;
     private String email;
     private String password;
@@ -21,7 +21,7 @@ public class registeractivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registeractivity);
+        setContentView(R.layout.activity_register);
 
         Button checkButton =(Button)findViewById(R.id.registerButton);
         checkButton.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +43,7 @@ public class registeractivity extends AppCompatActivity {
                 if(password.equals(password2)) {
                     Toast.makeText(getBaseContext(), "Successfully registered as " + username,
                             Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), login.class);
+                    Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(i);
                     finish();
                 }
