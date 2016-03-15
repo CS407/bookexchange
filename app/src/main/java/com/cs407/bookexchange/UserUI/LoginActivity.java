@@ -13,38 +13,32 @@ import android.widget.Toast;
 import com.cs407.bookexchange.R;
 
 public class LoginActivity extends AppCompatActivity {
-Button checkButton;
-    private String username; //name that user entered for activity_login
-    private String password; //password that user entered
+    private Button loginButton;
+    private EditText userNameEditText, passwordEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        checkButton =(Button)findViewById(R.id.loginButton1);
-        checkButton.setOnClickListener(new View.OnClickListener() {
+        userNameEditText = (EditText) findViewById(R.id.etUserNameLoginActivity);
+        passwordEditText = (EditText) findViewById(R.id.etPasswordLoginActivity);
+
+        loginButton = (Button)findViewById(R.id.btnLoginLoginActivity);
+        loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                EditText userField= (EditText) findViewById(R.id.username);
-                EditText userPass = (EditText) findViewById(R.id.password);
-                username = userField.getText().toString();
-                password = userPass.getText().toString();
-                if(username.equals("") || password.equals("")){
-                    Toast.makeText(getBaseContext(),"Please fill in both fields",
+                String username = userNameEditText.getText().toString();
+                String password = passwordEditText.getText().toString();
+                if (username.equals("") || password.equals("")) {
+                    Toast.makeText(getBaseContext(), "Please fill in both fields",
                             Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(getBaseContext(),"Logged In as " + username,
+                } else {
+                    Toast.makeText(getBaseContext(), "Logged In as " + username,
                             Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(),SearchActivity.class);
+                    Intent i = new Intent(getApplicationContext(), SearchActivity.class);
                     startActivity(i);
                 }
             }
         });
-    }
-    public String getUsername(){
-        return username;
-    }
-    public String getPassword(){
-        return password;
     }
 }

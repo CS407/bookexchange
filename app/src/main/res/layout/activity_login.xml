@@ -12,10 +12,10 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/username"
+        android:id="@+id/etUserNameLoginActivity"
         android:hint="UserName"
         android:layout_gravity="left"
-        android:layout_above="@+id/password"
+        android:layout_above="@+id/etPasswordLoginActivity"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
     <EditText
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:id="@+id/loginButton1"
+        android:id="@+id/btnLoginLoginActivity"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="163dp" />

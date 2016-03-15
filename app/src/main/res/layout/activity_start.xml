@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:id="@+id/loginButton"
+        android:id="@+id/btnLoginStartActivity"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="163dp" />
@@ -28,9 +28,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"
-        android:id="@+id/registerButton"
-        android:layout_above="@+id/loginButton"
-        android:layout_alignLeft="@+id/loginButton"
-        android:layout_alignStart="@+id/loginButton" />
+        android:id="@+id/btnRegisterStartActivity"
+        android:layout_above="@+id/btnLoginStartActivity"
+        android:layout_alignLeft="@+id/btnLoginStartActivity"
+        android:layout_alignStart="@+id/btnLoginStartActivity" />
 
 </RelativeLayout>

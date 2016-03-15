@@ -11,59 +11,46 @@ import android.widget.Toast;
 import com.cs407.bookexchange.R;
 
 public class RegisterActivity extends AppCompatActivity {
-    private String username;
-    private String email;
-    private String password;
-    private String password2;
-    private int zip;
-    private String name;
-    private long phoneNum;
+
+    private EditText userNameEditText, emailEditText, passwordEditText;
+    private EditText confirmPasswordEditText, nameEditText, phoneEditText, zipcodeEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        Button checkButton =(Button)findViewById(R.id.registerButton);
-        checkButton.setOnClickListener(new View.OnClickListener() {
+        userNameEditText = (EditText) findViewById(R.id.etUserNameRegisterActivity);
+        emailEditText = (EditText) findViewById(R.id.etEmailRegisterActivity);
+        passwordEditText = (EditText) findViewById(R.id.etPasswordRegisterActivity);
+        confirmPasswordEditText = (EditText) findViewById(R.id.etConfirmPasswordRegisterActivity);
+        nameEditText = (EditText) findViewById(R.id.etNameRegisterActivity);
+        phoneEditText = (EditText) findViewById(R.id.etPhoneRegisterActivity);
+        zipcodeEditText = (EditText) findViewById(R.id.etZipcodeRegisterActivity);
+
+        Button registerButton = (Button)findViewById(R.id.btnRegisterStartActivity);
+        registerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                EditText userField = (EditText) findViewById(R.id.editText);
-                EditText emailField = (EditText) findViewById(R.id.editText2);
-                EditText passField = (EditText) findViewById(R.id.editText3);
-                EditText pass2Field = (EditText) findViewById(R.id.editText4);
-                EditText nameField = (EditText) findViewById(R.id.editText5);
-                EditText phoneField = (EditText) findViewById(R.id.editText7);
-                EditText zipField = (EditText) findViewById(R.id.editText6);
-                username = userField.getText().toString();
-                email = emailField.getText().toString();
-                password = passField.getText().toString();
-                password2 = pass2Field.getText().toString();
-                name = nameField.getText().toString();
-                zip = Integer.parseInt(zipField.getText().toString());
-                phoneNum = Long.parseLong(phoneField.getText().toString());
-                if(password.equals(password2)) {
+                String username = userNameEditText.getText().toString();
+                String email = emailEditText.getText().toString();
+                String password = passwordEditText.getText().toString();
+                String confirmPassword = confirmPasswordEditText.getText().toString();
+                String name = nameEditText.getText().toString();
+                int zip = Integer.parseInt(zipcodeEditText.getText().toString());
+                long phoneNum = Long.parseLong(phoneEditText.getText().toString());
+
+                if (password.equals(confirmPassword)) {
                     Toast.makeText(getBaseContext(), "Successfully registered as " + username,
                             Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(i);
                     finish();
-                }
-                else{
-
+                } else {
                     Toast.makeText(getBaseContext(), "Passwords do not match",
                             Toast.LENGTH_SHORT).show();
                 }
             }
         });
-    }
-
-    public String getUsername(){
-        return username;
-    }
-    public String getEmail(){
-        return email;
-    }
-    public String getPassword() {
-        return password;
     }
 
 }
