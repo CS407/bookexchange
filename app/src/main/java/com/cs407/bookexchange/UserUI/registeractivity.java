@@ -28,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
         phoneEditText = (EditText) findViewById(R.id.etPhoneRegisterActivity);
         zipcodeEditText = (EditText) findViewById(R.id.etZipcodeRegisterActivity);
 
-        Button registerButton = (Button)findViewById(R.id.btnRegisterStartActivity);
+        Button registerButton = (Button)findViewById(R.id.btnRegisterRegisterActivity);
         registerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String username = userNameEditText.getText().toString();
