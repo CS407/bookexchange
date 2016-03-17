@@ -28,8 +28,6 @@ public class CreateUserConnector extends AsyncTask<HashMap<String, String>, Void
 
     @Override
     protected Boolean doInBackground(HashMap<String, String>... params) {
-        boolean retVal = Create.executeCreate(Constants.CRUDObject.USER, params[0]);
-
-        return new Boolean(retVal);
+       return Create.executeCreate(Constants.CRUDObject.USER, params[0]);
     }
 }

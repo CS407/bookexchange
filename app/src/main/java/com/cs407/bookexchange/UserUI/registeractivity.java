@@ -9,6 +9,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cs407.bookexchange.R;
+import com.cs407.bookexchange.connectors.users.CreateUserConnector;
+import com.cs407.bookexchange.db.TableDefs;
+
+import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -39,12 +43,17 @@ public class RegisterActivity extends AppCompatActivity {
                 int zip = Integer.parseInt(zipcodeEditText.getText().toString());
                 long phoneNum = Long.parseLong(phoneEditText.getText().toString());
 
+                HashMap<String, String> params = new HashMap<String, String>();
+                params.put(TableDefs.Users.COLUMN_USERNAME, username);
+                params.put(TableDefs.Users.COLUMN_PASSWORD, password);
+                params.put(TableDefs.Users.COLUMN_EMAIL, email);
+                params.put(TableDefs.Users.COLUMN_ZIPCODE, String.valueOf(zip));
+                params.put(TableDefs.Users.COLUMN_NAME, name);
+                params.put(TableDefs.Users.COLUMN_PHONE, String.valueOf(phoneNum));
+
                 if (password.equals(confirmPassword)) {
-                    Toast.makeText(getBaseContext(), "Successfully registered as " + username,
-                            Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(i);
-                    finish();
+                    CreateUserConnector userConnector = new CreateUserConnector();
+                    userConnector.execute(params);
                 } else {
                     Toast.makeText(getBaseContext(), "Passwords do not match",
                             Toast.LENGTH_SHORT).show();
