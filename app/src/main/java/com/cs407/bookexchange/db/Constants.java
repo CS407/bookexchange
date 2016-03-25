@@ -12,12 +12,12 @@ public class Constants {
     };
 
     public static String urlReadBook = "";
-    public static String urlReadUser = "";
+    public static String urlReadUser = "http://pages.cs.wisc.edu/~dudenas/attempt_login.php";
     public static String urlReadBuyer = "";
     public static String urlReadSeller = "";
 
     public static String urlCreateBook = "";
-    public static String urlCreateUser = "";
+    public static String urlCreateUser = "http://pages.cs.wisc.edu/~dudenas/create_user.php";
     public static String urlCreateBuyer = "";
     public static String urlCreateSeller = "";
 
@@ -32,5 +32,5 @@ public class Constants {
     public static String urlDeleteSeller = "";
 
     public static String RESPONSE_KEY_SUCCESS = "success";
-    public static String RESPONSE_KEY_VALS = "vals";
+    public static String RESPONSE_KEY_USER = "user";
 }

@@ -1,13 +1,20 @@
 package com.cs407.bookexchange.db;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
+
 import org.json.*;
 
 /**
@@ -15,9 +22,9 @@ import org.json.*;
  */
 public class Read {
 
-    public static ArrayList<?> executeRead(Constants.CRUDObject _crudobj, String[] params) {
+    public static ArrayList<Object> executeRead(Constants.CRUDObject _crudobj, HashMap<String, String> params) {
 
-        ArrayList<?> readSet = new ArrayList<>();
+        ArrayList<Object> readSet = new ArrayList<>();
 
         switch(_crudobj) {
             case BOOK:readSet = getBookSet(params);
@@ -33,76 +40,90 @@ public class Read {
         return readSet;
     }
 
-    private static ArrayList<Book> getBookSet(String[] params) {
-        ArrayList<Book> bookSet = null;
+    private static byte[] getPostBytes(HashMap<String, String> params)
+    {
+        StringBuilder postData = new StringBuilder();
+
+        try {
+            for(String key : params.keySet()) {
+                if (postData.length() != 0)
+                    postData.append("&");
+
+                postData.append(URLEncoder.encode(key, "UTF-8"));
+                postData.append("=");
+                postData.append(URLEncoder.encode(params.get(key), "UTF-8"));
+            }
+
+            return postData.toString().getBytes("UTF-8");
+        } catch (UnsupportedEncodingException uee) {
+            Log.d("[DB] Unsup Encoding ", uee.getMessage());
+            return null;
+        }
+    }
+
+    private static ArrayList<Object> getBookSet(HashMap<String, String> params) {
+        ArrayList<Object> bookSet = null;
 
         return bookSet;
     }
 
-    private static ArrayList<User> getUserSet(String[] params) {
-        ArrayList<User> userSet = new ArrayList<User>();
+    private static ArrayList<Object> getUserSet(HashMap<String, String> params) {
         String targetUrl = Constants.urlReadUser;
+        ArrayList<Object> users = null;
 
         try {
             URL userGetUrl = new URL(targetUrl);
             HttpURLConnection urlConnection = (HttpURLConnection)userGetUrl.openConnection();
 
+            byte[] postData = getPostBytes(params);
+
             urlConnection.setDoOutput(true);
-            OutputStreamWriter connWriter = new OutputStreamWriter(urlConnection.getOutputStream());
+            urlConnection.setDoInput(true);
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            urlConnection.setRequestProperty("Content-Length", String.valueOf(postData.length));
+            OutputStream connWriter = urlConnection.getOutputStream();
+            connWriter.write(postData);
+            connWriter.flush();
+            connWriter.close();
 
-            //creating json from params goes here
-            //connWriter.write();
             if(urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                connWriter.close();
-
                 BufferedReader connReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-                String response = connReader.readLine();
 
+                connReader.readLine(); connReader.readLine();
+                String response = connReader.readLine();
                 JSONObject respJson = new JSONObject(response);
                 String success = respJson.getString(Constants.RESPONSE_KEY_SUCCESS);
                 if (success.equalsIgnoreCase("1")) {
-                    JSONArray usersJson = respJson.getJSONArray(Constants.RESPONSE_KEY_VALS);
+                    users = new ArrayList<Object>();
+                    String userJson = respJson.getString(Constants.RESPONSE_KEY_USER);
+                    JSONObject user = new JSONObject(userJson);
 
-                    if(usersJson.length() == 1) {
-                        JSONObject obj = usersJson.getJSONObject(0);
-
-                        User user = new User();
-                        user.set_name(obj.getString(TableDefs.Users.COLUMN_NAME));
-                        user.set_email(obj.getString(TableDefs.Users.COLUMN_EMAIL));
-                        user.set_password(obj.getString(TableDefs.Users.COLUMN_PASSWORD));
-                        user.set_username(obj.getString(TableDefs.Users.COLUMN_USERNAME));
-                        user.set_phone(obj.getString(TableDefs.Users.COLUMN_PHONE));
-                        user.set_zip(Integer.parseInt(obj.getString(TableDefs.Users.COLUMN_ZIPCODE)));
-
-                        userSet.add(user);
-                    } else {
-                        return null;
-                    }
+                    users.add(User.JsonToObj(user));
                 }
-
                 connReader.close();
             }
 
             urlConnection.disconnect();
         } catch (MalformedURLException mulre) {
-            return null;
+            Log.d("[DB] Malformed URL ", mulre.getMessage());
         } catch (IOException ioe) {
-            return null;
+            Log.d("[DB] IO ", ioe.getMessage());
         } catch (JSONException jsoe) {
-            return null;
+            Log.d("[DB] JSON ", jsoe.getMessage());
         }
 
-        return userSet;
+        return users;
     }
 
-    private static ArrayList<Buyer> getBuyerSet(String[] params) {
-        ArrayList<Buyer> buyerSet = null;
+    private static ArrayList<Object> getBuyerSet(HashMap<String, String> params) {
+        ArrayList<Object> buyerSet = null;
 
         return buyerSet;
     }
 
-    private static ArrayList<Seller> getSellerSet(String[] params) {
-        ArrayList<Seller> sellerSet = null;
+    private static ArrayList<Object> getSellerSet(HashMap<String, String> params) {
+        ArrayList<Object> sellerSet = null;
 
         return sellerSet;
     }

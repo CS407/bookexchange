@@ -1,5 +1,10 @@
 package com.cs407.bookexchange.db;
 
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by ssunny7 on 2/29/2016.
  */
@@ -84,6 +89,23 @@ public class User {
         sb.append(TableDefs.Users.COLUMN_USERNAME + ":" + _username);
 
         return sb.toString();
+    }
+
+    public static User JsonToObj(JSONObject json) {
+        User user = new User();
+
+        try {
+            user.set_email(json.getString(TableDefs.Users.COLUMN_EMAIL));
+            user.set_zip(json.getInt(TableDefs.Users.COLUMN_ZIPCODE));
+            user.set_phone(json.getString(TableDefs.Users.COLUMN_PHONE));
+            user.set_username(json.getString(TableDefs.Users.COLUMN_USERNAME));
+            user.set_password(json.getString(TableDefs.Users.COLUMN_PASSWORD));
+            user.set_name(json.getString(TableDefs.Users.COLUMN_NAME));
+        } catch (JSONException jsoe) {
+            Log.d("[USER]", jsoe.getMessage());
+        }
+
+        return user;
     }
 }
 
