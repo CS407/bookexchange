@@ -17,7 +17,7 @@ public class Constants {
     public static String urlReadSeller = "";
 
     public static String urlCreateBook = "";
-    public static String urlCreateUser = "http://pages.cs.wisc.edu/~dudenas/create_user.php";
+    public static String urlCreateUser = "http://pages.cs.wisc.edu/~ssunny/webserver/create_user.php";
     public static String urlCreateBuyer = "";
     public static String urlCreateSeller = "";
 

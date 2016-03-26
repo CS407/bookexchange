@@ -76,6 +76,7 @@ public class Create {
             URL userGetUrl = new URL(targetUrl);
             HttpURLConnection urlConnection = (HttpURLConnection)userGetUrl.openConnection();
 
+            params.put("submit", "true");
             byte[] postData = getPostBytes(params);
 
             urlConnection.setDoOutput(true);
