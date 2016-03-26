@@ -11,6 +11,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cs407.bookexchange.R;
+import com.cs407.bookexchange.connectors.users.LoginUserConnector;
+import com.cs407.bookexchange.db.TableDefs;
+
+import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
@@ -29,15 +33,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String username = userNameEditText.getText().toString();
                 String password = passwordEditText.getText().toString();
-                if (username.equals("") || password.equals("")) {
-                    Toast.makeText(getBaseContext(), "Please fill in both fields",
-                            Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getBaseContext(), "Logged In as " + username,
-                            Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getApplicationContext(), SearchActivity.class);
-                    startActivity(i);
-                }
+
+                HashMap<String, String> params = new HashMap<String, String>();
+                params.put(TableDefs.Users.COLUMN_USERNAME, username);
+                params.put(TableDefs.Users.COLUMN_PASSWORD, password);
+
+                LoginUserConnector loginConnector = new LoginUserConnector();
+                loginConnector.execute(params);
             }
         });
     }

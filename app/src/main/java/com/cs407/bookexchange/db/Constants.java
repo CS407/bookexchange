@@ -12,7 +12,7 @@ public class Constants {
     };
 
     public static String urlReadBook = "";
-    public static String urlReadUser = "http://pages.cs.wisc.edu/~dudenas/attempt_login.php";
+    public static String urlReadUser = "http://pages.cs.wisc.edu/~ssunny/webserver/attempt_login.php";
     public static String urlReadBuyer = "";
     public static String urlReadSeller = "";
 

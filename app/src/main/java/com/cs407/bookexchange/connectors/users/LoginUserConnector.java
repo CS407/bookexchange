@@ -1,6 +1,7 @@
 package com.cs407.bookexchange.connectors.users;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.cs407.bookexchange.db.Constants;
 import com.cs407.bookexchange.db.Read;
@@ -20,6 +21,8 @@ public class LoginUserConnector extends AsyncTask<HashMap<String, String>, Void,
 
     @Override
     protected void onPostExecute(Boolean retVal) {
+        Log.d("[LUC]", "Login " + (retVal.booleanValue()?"successful":"failed"));
+
         super.onPostExecute(retVal);
     }
 

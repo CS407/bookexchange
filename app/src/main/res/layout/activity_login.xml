@@ -22,16 +22,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/etUserNameLoginActivity"
         android:hint="UserName"
-        android:layout_gravity="left"
-        android:layout_margin="10dp"
-        android:layout_above="@+id/etPasswordLoginActivity" />
+        android:layout_gravity="start"
+        android:layout_margin="10dp" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/password"
+        android:id="@+id/etPasswordLoginActivity"
         android:hint="Password"
         android:layout_margin="10dp"
-        android:layout_gravity="left" />
+        android:layout_gravity="start" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
