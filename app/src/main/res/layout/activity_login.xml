@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/etPasswordLoginActivity"
         android:hint="Password"
+        android:inputType="textPassword"
         android:layout_margin="10dp"
         android:layout_gravity="start" />
     <Button
