@@ -18,14 +18,15 @@
     </string>
     <string name="title_activity_register">register</string>
 
-<string-array name="Deptnumber">
-    <item> computer sciences</item>
-    <item> english</item>
-    <item> american indian studies</item>
-    <item> linguistic</item>
+    <string-array name="Deptnumber">
+        <item> computer sciences</item>
+        <item> english</item>
+        <item> american indian studies</item>
+        <item> linguistic</item>
 
-</string-array>
+    </string-array>
     <string name="username">username</string>
     <string name="password">password</string>
     <string name="loginButton1">loginButton1</string>
+    <string name="title_activity_register_user">RegisterUserActivity</string>
 </resources>
