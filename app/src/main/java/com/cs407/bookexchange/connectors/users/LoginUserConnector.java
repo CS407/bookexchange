@@ -1,9 +1,11 @@
 package com.cs407.bookexchange.connectors.users;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.cs407.bookexchange.UserUI.SearchActivity;
 import com.cs407.bookexchange.db.Constants;
 import com.cs407.bookexchange.db.Read;
 import com.cs407.bookexchange.db.User;
@@ -35,6 +37,9 @@ public class LoginUserConnector extends AsyncTask<HashMap<String, String>, Void,
 
         if(retVal.booleanValue()) {
             UserPrefs.writePreference(com.cs407.bookexchange.userprefs.Constants.PREF_CUR_USER, username);
+
+            Intent searchIntent = new Intent(context, SearchActivity.class);
+            context.startActivity(searchIntent);
         }
 
         super.onPostExecute(retVal);
