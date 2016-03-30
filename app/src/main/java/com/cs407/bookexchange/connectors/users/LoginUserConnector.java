@@ -1,5 +1,6 @@
 package com.cs407.bookexchange.connectors.users;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 import com.cs407.bookexchange.db.Constants;
@@ -14,8 +15,10 @@ import java.util.HashMap;
  */
 public class LoginUserConnector extends AsyncTask<HashMap<String, String>, Void, Boolean> {
     private String username;
+    private Context context;
 
-    public LoginUserConnector(String _username) {
+    public LoginUserConnector(Context _context, String _username) {
+        context = _context;
         username = _username;
     }
 
