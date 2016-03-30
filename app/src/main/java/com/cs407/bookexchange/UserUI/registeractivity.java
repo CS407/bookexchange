@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
                     params.put(TableDefs.Users.COLUMN_NAME, name);
                     params.put(TableDefs.Users.COLUMN_PHONE, String.valueOf(phoneNum));
 
-                    CreateUserConnector userConnector = new CreateUserConnector(getApplicationContext(), username);
+                    CreateUserConnector userConnector = new CreateUserConnector(RegisterActivity.this, username);
                     userConnector.execute(params);
                 } else {
                     Toast.makeText(getBaseContext(), "Passwords do not match",

@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
                 params.put(TableDefs.Users.COLUMN_USERNAME, username);
                 params.put(TableDefs.Users.COLUMN_PASSWORD, getPasswordHash(password));
 
-                LoginUserConnector loginConnector = new LoginUserConnector(getApplicationContext(), username);
+                LoginUserConnector loginConnector = new LoginUserConnector(LoginActivity.this, username);
                 loginConnector.execute(params);
             }
         });

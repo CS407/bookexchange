@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.cs407.bookexchange.UserUI.RegisterActivity;
 import com.cs407.bookexchange.UserUI.SearchActivity;
 import com.cs407.bookexchange.db.Constants;
 import com.cs407.bookexchange.db.Create;
