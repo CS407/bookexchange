@@ -14,6 +14,12 @@ import java.util.HashMap;
  * Created by ssunny7 on 3/24/2016.
  */
 public class LoginUserConnector extends AsyncTask<HashMap<String, String>, Void, Boolean> {
+    private String username;
+
+    public LoginUserConnector(String _username) {
+        username = _username;
+    }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
