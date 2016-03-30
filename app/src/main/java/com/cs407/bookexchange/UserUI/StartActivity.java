@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.cs407.bookexchange.R;
+import com.cs407.bookexchange.userprefs.Constants;
+import com.cs407.bookexchange.userprefs.UserPrefs;
 
 
 public class StartActivity extends AppCompatActivity {
@@ -19,6 +21,11 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+        if(UserPrefs.readPreference(Constants.PREF_CUR_USER) != null) {
+            Intent searchIntent = new Intent(getApplicationContext(), SearchActivity.class);
+            startActivity(searchIntent);
+        }
+
         loginButton = (Button)findViewById(R.id.btnLoginStartActivity);
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -28,8 +35,8 @@ public class StartActivity extends AppCompatActivity {
         });
 
         registerButton = (Button)findViewById(R.id.btnRegisterStartActivity);
-        registerButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intentRegister);
             }
