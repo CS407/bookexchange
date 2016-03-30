@@ -6,6 +6,7 @@ import android.util.Log;
 import com.cs407.bookexchange.db.Constants;
 import com.cs407.bookexchange.db.Read;
 import com.cs407.bookexchange.db.User;
+import com.cs407.bookexchange.userprefs.UserPrefs;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +29,10 @@ public class LoginUserConnector extends AsyncTask<HashMap<String, String>, Void,
     @Override
     protected void onPostExecute(Boolean retVal) {
         Log.d("[LUC]", "Login " + (retVal.booleanValue()?"successful":"failed"));
+
+        if(retVal.booleanValue()) {
+            UserPrefs.writePreference(com.cs407.bookexchange.userprefs.Constants.PREF_CUR_USER, username);
+        }
 
         super.onPostExecute(retVal);
     }
