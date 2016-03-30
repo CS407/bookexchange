@@ -21,9 +21,11 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
+        UserPrefs.init(getApplicationContext());
         if(UserPrefs.readPreference(Constants.PREF_CUR_USER) != null) {
             Intent searchIntent = new Intent(getApplicationContext(), SearchActivity.class);
             startActivity(searchIntent);
+            finish();
         }
 
         loginButton = (Button)findViewById(R.id.btnLoginStartActivity);

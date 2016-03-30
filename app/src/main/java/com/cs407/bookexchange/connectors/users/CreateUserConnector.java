@@ -1,5 +1,6 @@
 package com.cs407.bookexchange.connectors.users;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -39,6 +40,8 @@ public class CreateUserConnector extends AsyncTask<HashMap<String, String>, Void
 
             Intent searchIntent = new Intent(context, SearchActivity.class);
             context.startActivity(searchIntent);
+
+            ((Activity)context).finish();
         } else {
             Toast.makeText(context, "Username already exists, please enter a different username.", Toast.LENGTH_LONG).show();
         }
