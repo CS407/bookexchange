@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.cs407.bookexchange.UserUI.SearchActivity;
 import com.cs407.bookexchange.db.Constants;
@@ -40,6 +41,8 @@ public class LoginUserConnector extends AsyncTask<HashMap<String, String>, Void,
 
             Intent searchIntent = new Intent(context, SearchActivity.class);
             context.startActivity(searchIntent);
+        } else {
+            Toast.makeText(context, "Login failed.Incorrect username/password.", Toast.LENGTH_LONG).show();
         }
 
         super.onPostExecute(retVal);
