@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
-        android:id="@+id/button2"
+        android:id="@+id/searchButton"
         android:layout_below="@+id/numISBN"
         android:layout_centerHorizontal="true" />
 
