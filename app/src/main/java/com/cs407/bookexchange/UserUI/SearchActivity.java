@@ -19,7 +19,7 @@ public class SearchActivity extends AppCompatActivity {
         Button managerButton =(Button)findViewById(R.id.managerButton);
         managerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent in = new Intent(getApplicationContext(), SellerManagerActivity.class);
+                Intent in = new Intent(getApplicationContext(), ResultsActivity.class); //go to results
                 startActivity(in);
             }
         });
