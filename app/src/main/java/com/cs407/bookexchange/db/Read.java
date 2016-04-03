@@ -62,6 +62,8 @@ public class Read {
     }
 
     private static ArrayList<Object> getBookSet(HashMap<String, String> params) {
+        //TODO KAD fill this in
+
         ArrayList<Object> bookSet = null;
 
         return bookSet;

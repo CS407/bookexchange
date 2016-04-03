@@ -39,8 +39,6 @@ public class SearchActivity extends AppCompatActivity {
         Button searchButton =(Button)findViewById(R.id.searchButton);
         searchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //TODO get search results
-
                 HashMap<String, String> params = new HashMap<String, String>();
 
                 params.put(TableDefs.Books.COLUMN_ISBN, search_ISBN);
@@ -48,12 +46,7 @@ public class SearchActivity extends AppCompatActivity {
                 //params.put(TableDefs.Books.COLUMN_DEPARTMENT, search_dept);
 
                 SearchResultsConnector searchResultsConnector = new SearchResultsConnector(SearchActivity.this);
-                searchResultsConnector.execute(params);
-
-
-
-                Intent in = new Intent(getApplicationContext(), ResultsActivity.class);
-                startActivity(in);
+                searchResultsConnector.execute(params); //ResultsActivity will be called
             }
         });
 

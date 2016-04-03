@@ -8,6 +8,30 @@ import android.os.Parcelable;
  */
 public class Book implements Parcelable{
 
+    protected Book(Parcel in) {
+        _bookid = in.readString();
+        _title = in.readString();
+        _authors = in.readString();
+        _isbn = in.readString();
+        _price = in.readDouble();
+        _comments = in.readString();
+        _dept = in.readString();
+        _courseno = in.readString();
+        _edition = in.readString();
+    }
+
+    public static final Creator<Book> CREATOR = new Creator<Book>() {
+        @Override
+        public Book createFromParcel(Parcel in) {
+            return new Book(in);
+        }
+
+        @Override
+        public Book[] newArray(int size) {
+            return new Book[size];
+        }
+    };
+
     @Override
     public int describeContents() {
         return 0;
@@ -15,7 +39,15 @@ public class Book implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
+        dest.writeString(_bookid);
+        dest.writeString(_title);
+        dest.writeString(_authors);
+        dest.writeString(_isbn);
+        dest.writeDouble(_price);
+        dest.writeString(_comments);
+        dest.writeString(_dept);
+        dest.writeString(_courseno);
+        dest.writeString(_edition);
     }
 
     public enum Condition {
