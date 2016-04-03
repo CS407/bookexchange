@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingTop="5dp"
     tools:context=".UserUI.LoginActivity">
 
     <TextView
@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Login to Book Exchange"
-        android:padding="50dp"/>
+        android:layout_marginTop="5dp"
+        android:padding="10dp"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,7 +38,7 @@
         android:layout_height="wrap_content"
         android:padding="25dp"
         android:id="@+id/btnLoginLoginActivity"
-        android:layout_marginBottom="163dp"
+        android:layout_gravity="center"
         android:text="LOGIN"/>
 
 </LinearLayout>
