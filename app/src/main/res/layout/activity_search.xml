@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/numISBN"
-        android:layout_below="@+id/searchButton"
         android:hint="search by ISBN"
         android:layout_gravity="left"
         android:layout_centerVertical="true"
