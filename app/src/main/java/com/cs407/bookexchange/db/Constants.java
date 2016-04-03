@@ -11,7 +11,7 @@ public class Constants {
         SELLER
     };
 
-    public static String urlReadBook = "";
+    public static String urlReadBook = "http://pages.cs.wisc.edu/~dudenas/search_results_text.php"; //KAD
     public static String urlReadUser = "http://pages.cs.wisc.edu/~ssunny/webserver/attempt_login.php";
     public static String urlReadBuyer = "";
     public static String urlReadSeller = "";

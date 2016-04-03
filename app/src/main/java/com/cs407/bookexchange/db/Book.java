@@ -1,9 +1,22 @@
 package com.cs407.bookexchange.db;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by ssunny7 on 2/29/2016.
  */
-public class Book {
+public class Book implements Parcelable{
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+    }
 
     public enum Condition {
         NEW,
