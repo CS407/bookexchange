@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.cs407.bookexchange.R;
@@ -36,17 +37,18 @@ public class NewListingActivity extends AppCompatActivity {
                 EditText editedition = (EditText)findViewById(R.id.editEdition);
                 EditText edityear = (EditText)findViewById(R.id.edityear);
                 EditText editcondition = (EditText)findViewById(R.id.editcondition);
-                EditText editdept = (EditText)findViewById(R.id.editdept);
+                Spinner staticSpinner = (Spinner)findViewById(R.id.editdept);
                 EditText editclassnum = (EditText)findViewById(R.id.editclassnum);
                 EditText editcomment = (EditText)findViewById(R.id.editcomment);
                 EditText editprice = (EditText)findViewById(R.id.editprice);
                 EditText editisbn = (EditText)findViewById(R.id.editISBN);
                 if("".equals(editTitle.getText().toString())||
                 "".equals(editauthor.getText().toString())||
+                        "".equals(staticSpinner.getSelectedItem().toString())||
                 "".equals(editedition.getText().toString())||
                 "".equals(edityear.getText().toString())||
                 "".equals(editcondition.getText().toString())||
-                        "".equals(editdept.getText().toString())||
+
                         "".equals(editprice.getText().toString())||
                         "".equals(editisbn.getText().toString())
                 ){
@@ -58,7 +60,7 @@ public class NewListingActivity extends AppCompatActivity {
                     edition= editedition.getText().toString();
                     year=edityear.getText().toString();//int
                     condition= editcondition.getText().toString();
-                    dept=editdept.getText().toString();
+                    dept=staticSpinner.getSelectedItem().toString();
                     classNum = Integer.parseInt(editclassnum.getText().toString());//int
                     comments = editcomment.getText().toString();
                     price = Double.parseDouble(editprice.getText().toString());//double
