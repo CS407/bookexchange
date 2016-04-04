@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.cs407.bookexchange.UserUI.RegisterActivity;
 import com.cs407.bookexchange.UserUI.SearchActivity;
 import com.cs407.bookexchange.db.Constants;
 import com.cs407.bookexchange.db.Create;
@@ -18,7 +17,7 @@ import java.util.HashMap;
 /**
  * Created by ssunny7 on 3/12/2016.
  */
-public class CreateUserConnector extends AsyncTask<HashMap<String, String>, Void, Boolean> {
+public class CreateUserConnector extends AsyncTask<HashMap<String, String>, Void, String> {
     private String username;
     private Context context;
 
@@ -33,11 +32,12 @@ public class CreateUserConnector extends AsyncTask<HashMap<String, String>, Void
     }
 
     @Override
-    protected void onPostExecute(Boolean retVal) {
-        Log.d("[CUC]", "Registration " + (retVal.booleanValue() ? "successful" : "failed"));
+    protected void onPostExecute(String retVal) {
+        Log.d("[CUC]", "Registration " + (retVal != null? "successful" : "failed"));
 
-        if(retVal.booleanValue()) {
-            UserPrefs.writePreference(com.cs407.bookexchange.userprefs.Constants.PREF_CUR_USER, username);
+        if(retVal != null) {
+            UserPrefs.writePreference(com.cs407.bookexchange.userprefs.Constants.PREF_CUR_USER_USERNAME, username);
+            UserPrefs.writePreference(com.cs407.bookexchange.userprefs.Constants.PREF_CUR_USER_ID, retVal);
 
             Intent searchIntent = new Intent(context, SearchActivity.class);
             context.startActivity(searchIntent);
@@ -56,7 +56,7 @@ public class CreateUserConnector extends AsyncTask<HashMap<String, String>, Void
     }
 
     @Override
-    protected Boolean doInBackground(HashMap<String, String>... params) {
+    protected String doInBackground(HashMap<String, String>... params) {
        return Create.executeCreate(Constants.CRUDObject.USER, params[0]);
     }
 }

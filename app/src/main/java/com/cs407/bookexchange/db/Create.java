@@ -22,9 +22,9 @@ import java.util.HashMap;
  */
 public class Create {
 
-    public static boolean executeCreate(Constants.CRUDObject _crudobj, HashMap<String, String> params) {
+    public static String executeCreate(Constants.CRUDObject _crudobj, HashMap<String, String> params) {
 
-        boolean retVal = false;
+        String retVal = null;
 
         switch(_crudobj) {
             case BOOK:retVal = addBook(params);
@@ -59,8 +59,8 @@ public class Create {
         }
     }
 
-    private static boolean doAdd(String targetUrl, HashMap<String, String> params) {
-        boolean retVal = false;
+    private static String doAdd(String targetUrl, HashMap<String, String> params, String idKey, String objKey) {
+        String retVal = null;
 
         try {
             URL userGetUrl = new URL(targetUrl);
@@ -87,7 +87,10 @@ public class Create {
                 JSONObject respJson = new JSONObject(response);
                 String success = respJson.getString(Constants.RESPONSE_KEY_SUCCESS);
                 if (success.equalsIgnoreCase("1")) {
-                    retVal = true;
+                    String userJson = respJson.getString(objKey);
+                    JSONObject obj = new JSONObject(userJson);
+
+                    retVal = obj.getString(idKey);
                 }
                 connReader.close();
             }
@@ -104,16 +107,16 @@ public class Create {
         return retVal;
     }
 
-    private static boolean addBook(HashMap<String, String> params) {
-        return doAdd(Constants.urlCreateBook, params);
+    private static String addBook(HashMap<String, String> params) {
+        return doAdd(Constants.urlCreateBook, params, TableDefs.Books.COLUMN_BOOKID, Constants.RESPONSE_KEY_BOOK);
     }
 
-    private static boolean addUser(HashMap<String, String> params) {
-        return doAdd(Constants.urlCreateUser, params);
+    private static String addUser(HashMap<String, String> params) {
+        return doAdd(Constants.urlCreateUser, params, TableDefs.Books.COLUMN_USERID, Constants.RESPONSE_KEY_USER);
     }
 
-    private static boolean addBuyer(HashMap<String, String> params) {
-        boolean retVal = false;
+    private static String addBuyer(HashMap<String, String> params) {
+        String retVal = null;
 
         return retVal;
     }

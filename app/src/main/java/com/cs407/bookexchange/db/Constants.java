@@ -28,4 +28,5 @@ public class Constants {
 
     public static String RESPONSE_KEY_SUCCESS = "success";
     public static String RESPONSE_KEY_USER = "user";
+    public static String RESPONSE_KEY_BOOK = "book";
 }

@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.cs407.bookexchange.UserUI.LoginActivity;
 import com.cs407.bookexchange.UserUI.SearchActivity;
 import com.cs407.bookexchange.db.Constants;
 import com.cs407.bookexchange.db.Read;
@@ -39,7 +38,7 @@ public class LoginUserConnector extends AsyncTask<HashMap<String, String>, Void,
         Log.d("[LUC]", "Login " + (retVal.booleanValue()?"successful":"failed"));
 
         if(retVal.booleanValue()) {
-            UserPrefs.writePreference(com.cs407.bookexchange.userprefs.Constants.PREF_CUR_USER, username);
+            UserPrefs.writePreference(com.cs407.bookexchange.userprefs.Constants.PREF_CUR_USER_USERNAME, username);
 
             Intent searchIntent = new Intent(context, SearchActivity.class);
             context.startActivity(searchIntent);
@@ -61,8 +60,11 @@ public class LoginUserConnector extends AsyncTask<HashMap<String, String>, Void,
     protected Boolean doInBackground(HashMap<String, String>... params) {
         ArrayList<Object> users = Read.executeRead(Constants.CRUDObject.USER, params[0]);
 
-        if(users != null && users.size() == 1)
+        if(users != null && users.size() == 1) {
+            UserPrefs.writePreference(com.cs407.bookexchange.userprefs.Constants.PREF_CUR_USER_ID, ((User)users.get(0)).get_userid());
+
             return true;
+        }
         else
             return false;
     }
