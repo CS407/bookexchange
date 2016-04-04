@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cs407.bookexchange.R;
+import com.cs407.bookexchange.connectors.books.CreateBookConnector;
 import com.cs407.bookexchange.db.TableDefs;
 
 import java.util.HashMap;
@@ -40,13 +41,17 @@ public class NewListingActivity extends AppCompatActivity {
                 String authors = etAuthors.getText().toString();
                 String comments = etComments.getText().toString();
                 String condition = etCondition.getText().toString();
-                Float price = Float.parseFloat(etPrice.getText().toString());
+                Float price = null;
+                if(!etPrice.getText().toString().isEmpty())
+                    price = Float.parseFloat(etPrice.getText().toString());
                 String courseno = etCourseNo.getText().toString();
                 String dept = etDept.getText().toString();
                 String isbn = etISBN.getText().toString();
-                Integer edition = Integer.parseInt(etEdition.getText().toString());
+                Integer edition = null;
+                if(!etEdition.getText().toString().isEmpty())
+                    edition = Integer.parseInt(etEdition.getText().toString());
 
-                if(title.isEmpty() || authors.isEmpty() || condition.isEmpty() || price.isNaN() || dept.isEmpty() || isbn.isEmpty()) {
+                if(title.isEmpty() || authors.isEmpty() || condition.isEmpty() || price == null || edition == null || dept.isEmpty() || isbn.isEmpty()) {
                     Toast.makeText(NewListingActivity.this, "Some fields are empty, please enter all required details.", Toast.LENGTH_LONG).show();
                 } else {
                     HashMap<String, String> params = new HashMap<String, String>();
@@ -60,6 +65,9 @@ public class NewListingActivity extends AppCompatActivity {
                     params.put(TableDefs.Books.COLUMN_ISBN, isbn);
                     params.put(TableDefs.Books.COLUMN_EDITION, edition.toString());
                     params.put(TableDefs.Books.COLUMN_PRICE, price.toString());
+
+                    CreateBookConnector bookConnector = new CreateBookConnector(NewListingActivity.this);
+                    bookConnector.execute(params);
                 }
             }
         });

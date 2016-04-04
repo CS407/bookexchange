@@ -22,7 +22,7 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
         UserPrefs.init(getApplicationContext());
-        if(UserPrefs.readPreference(Constants.PREF_CUR_USER) != null) {
+        if(UserPrefs.readPreference(Constants.PREF_CUR_USER_USERNAME) != null) {
             Intent searchIntent = new Intent(getApplicationContext(), SearchActivity.class);
             startActivity(searchIntent);
             finish();

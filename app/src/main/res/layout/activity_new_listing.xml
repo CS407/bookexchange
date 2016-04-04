@@ -11,99 +11,60 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".UserUI.NewListingActivity">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Title" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Title"
             android:id="@+id/etTitleNewListingActivity" />
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Authors" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Authors"
             android:id="@+id/etAuthorsNewListingActivity" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Edition" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Edition"
+            android:inputType="number"
             android:id="@+id/etEditionNewListingActivity" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Condition" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Condition"
             android:id="@+id/etConditionNewListingActivity" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Department" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:hint="Department"
             android:id="@+id/etDepartmentNewListingActivity" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Class Number" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Course Number"
             android:inputType="number"
             android:id="@+id/etClassNewListingActivity" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Comments" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="Comments"
             android:id="@+id/etCommentsNewListingActivity" />
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Price" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
+            android:hint="Price"
             android:id="@+id/etPriceNewListingActivity" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="ISBN" />
 
         <EditText
             android:layout_width="match_parent"
+            android:hint="ISBN"
             android:layout_height="wrap_content"
             android:id="@+id/etISBNNewListingActivity" />
 
@@ -111,6 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:padding="20dp"
             android:text="Create"
             android:id="@+id/btnAddNewListingActivity" />
 

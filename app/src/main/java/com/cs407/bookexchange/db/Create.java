@@ -82,7 +82,7 @@ public class Create {
             if(urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 BufferedReader connReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 
-                connReader.readLine(); connReader.readLine();
+                //connReader.readLine(); connReader.readLine();
                 String response = connReader.readLine();
                 JSONObject respJson = new JSONObject(response);
                 String success = respJson.getString(Constants.RESPONSE_KEY_SUCCESS);
