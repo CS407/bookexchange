@@ -17,6 +17,7 @@ public class TableDefs {
         public static final String COLUMN_DEPARTMENT = "department";
         public static final String COLUMN_COURSENO = "courseno";
         public static final String COLUMN_EDITION = "edition";
+        public static final String COLUMN_USERID="userid";
     }
 
     public static final class Users {
@@ -35,14 +36,6 @@ public class TableDefs {
         public static final String TABLE_NAME = "buyers";
 
         public static final String COLUMN_BUYERID = "buyerid";
-        public static final String COLUMN_BOOKID = "bookid";
-        public static final String COLUMN_USERID = "userid";
-    }
-
-    public static final class Sellers {
-        public static final String TABLE_NAME = "sellers";
-
-        public static final String COLUMN_SELLERID = "sellerid";
         public static final String COLUMN_BOOKID = "bookid";
         public static final String COLUMN_USERID = "userid";
     }
