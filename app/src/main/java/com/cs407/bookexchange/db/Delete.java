@@ -16,8 +16,6 @@ public class Delete {
                 break;
             case BUYER:retVal = deleteBuyer(params);
                 break;
-            case SELLER:retVal = deleteSeller(params);
-                break;
         }
 
         return retVal;
@@ -36,12 +34,6 @@ public class Delete {
     }
 
     private static boolean deleteBuyer(String[] params) {
-        boolean retVal = false;
-
-        return retVal;
-    }
-
-    private static boolean deleteSeller(String[] params) {
         boolean retVal = false;
 
         return retVal;

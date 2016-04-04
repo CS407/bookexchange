@@ -16,8 +16,6 @@ public class Update {
                 break;
             case BUYER:retVal = updateBuyer(params);
                 break;
-            case SELLER:retVal = updateSeller(params);
-                break;
         }
 
         return retVal;
@@ -36,12 +34,6 @@ public class Update {
     }
 
     private static boolean updateBuyer(String[] params) {
-        boolean retVal = false;
-
-        return retVal;
-    }
-
-    private static boolean updateSeller(String[] params) {
         boolean retVal = false;
 
         return retVal;

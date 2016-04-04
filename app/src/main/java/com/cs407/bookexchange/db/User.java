@@ -95,6 +95,7 @@ public class User {
         User user = new User();
 
         try {
+            user.set_userid(json.getString(TableDefs.Users.COLUMN_USERID));
             user.set_email(json.getString(TableDefs.Users.COLUMN_EMAIL));
             user.set_zip(json.getInt(TableDefs.Users.COLUMN_ZIPCODE));
             user.set_phone(json.getString(TableDefs.Users.COLUMN_PHONE));

@@ -33,8 +33,6 @@ public class Create {
                 break;
             case BUYER:retVal = addBuyer(params);
                 break;
-            case SELLER:retVal = addSeller(params);
-                break;
         }
 
         return retVal;
@@ -115,12 +113,6 @@ public class Create {
     }
 
     private static boolean addBuyer(HashMap<String, String> params) {
-        boolean retVal = false;
-
-        return retVal;
-    }
-
-    private static boolean addSeller(HashMap<String, String> params) {
         boolean retVal = false;
 
         return retVal;

@@ -33,8 +33,6 @@ public class Read {
                       break;
             case BUYER:readSet = getBuyerSet(params);
                         break;
-            case SELLER:readSet = getSellerSet(params);
-                        break;
         }
 
         return readSet;
@@ -120,11 +118,5 @@ public class Read {
         ArrayList<Object> buyerSet = null;
 
         return buyerSet;
-    }
-
-    private static ArrayList<Object> getSellerSet(HashMap<String, String> params) {
-        ArrayList<Object> sellerSet = null;
-
-        return sellerSet;
     }
 }
