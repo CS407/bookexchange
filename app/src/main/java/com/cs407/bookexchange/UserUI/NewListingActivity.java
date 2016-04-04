@@ -9,95 +9,59 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cs407.bookexchange.R;
+import com.cs407.bookexchange.db.TableDefs;
+
+import java.util.HashMap;
 
 public class NewListingActivity extends AppCompatActivity {
-    private String bookTitle;
-    private String author;
-    private String edition;
-    private String year;
-    private String condition;
-    private String dept;
-    private int classNum;
-    private String comments;
-    private Double price;
-    private long ISBN;
-    private Button btncreate;
+
+    private EditText etTitle, etComments, etISBN, etAuthors, etCondition, etEdition, etDept, etPrice, etCourseNo;
+    private Button btnAdd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_listing);
-        btncreate =(Button)findViewById(R.id.BTNcreatenewbook);
-        btncreate.setOnClickListener(new View.OnClickListener() {
+
+        etTitle = (EditText)findViewById(R.id.etTitleNewListingActivity);
+        etAuthors = (EditText)findViewById(R.id.etAuthorsNewListingActivity);
+        etComments = (EditText)findViewById(R.id.etCommentsNewListingActivity);
+        etCondition = (EditText)findViewById(R.id.etConditionNewListingActivity);
+        etPrice = (EditText)findViewById(R.id.etPriceNewListingActivity);
+        etCourseNo = (EditText)findViewById(R.id.etClassNewListingActivity);
+        etDept = (EditText)findViewById(R.id.etDepartmentNewListingActivity);
+        etISBN = (EditText)findViewById(R.id.etISBNNewListingActivity);
+        etEdition = (EditText)findViewById(R.id.etEditionNewListingActivity);
+
+        btnAdd =(Button)findViewById(R.id.btnAddNewListingActivity);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent in = new Intent(getApplicationContext(), SellerManagerActivity.class);
-                startActivity(in);
-                EditText editTitle = (EditText)findViewById(R.id.edittitle);
-                EditText editauthor = (EditText)findViewById(R.id.editauthor);
-                EditText editedition = (EditText)findViewById(R.id.editEdition);
-                EditText edityear = (EditText)findViewById(R.id.edityear);
-                EditText editcondition = (EditText)findViewById(R.id.editcondition);
-                EditText editdept = (EditText)findViewById(R.id.editdept);
-                EditText editclassnum = (EditText)findViewById(R.id.editclassnum);
-                EditText editcomment = (EditText)findViewById(R.id.editcomment);
-                EditText editprice = (EditText)findViewById(R.id.editprice);
-                EditText editisbn = (EditText)findViewById(R.id.editISBN);
-                if("".equals(editTitle.getText().toString())||
-                "".equals(editauthor.getText().toString())||
-                "".equals(editedition.getText().toString())||
-                "".equals(edityear.getText().toString())||
-                "".equals(editcondition.getText().toString())||
-                        "".equals(editdept.getText().toString())||
-                        "".equals(editprice.getText().toString())||
-                        "".equals(editisbn.getText().toString())
-                ){
-                    Toast.makeText(getBaseContext(), "some fields are empty, please make sure to enter all necessary information",
-                            Toast.LENGTH_SHORT).show();
-                }else{
-                    bookTitle = editTitle.getText().toString();
-                    author=editauthor.getText().toString();
-                    edition= editedition.getText().toString();
-                    year=edityear.getText().toString();//int
-                    condition= editcondition.getText().toString();
-                    dept=editdept.getText().toString();
-                    classNum = Integer.parseInt(editclassnum.getText().toString());//int
-                    comments = editcomment.getText().toString();
-                    price = Double.parseDouble(editprice.getText().toString());//double
-                    ISBN = Long.valueOf(editisbn.getText().toString());//long
+                String title = etTitle.getText().toString();
+                String authors = etAuthors.getText().toString();
+                String comments = etComments.getText().toString();
+                String condition = etCondition.getText().toString();
+                Float price = Float.parseFloat(etPrice.getText().toString());
+                String courseno = etCourseNo.getText().toString();
+                String dept = etDept.getText().toString();
+                String isbn = etISBN.getText().toString();
+                Integer edition = Integer.parseInt(etEdition.getText().toString());
 
+                if(title.isEmpty() || authors.isEmpty() || condition.isEmpty() || price.isNaN() || dept.isEmpty() || isbn.isEmpty()) {
+                    Toast.makeText(NewListingActivity.this, "Some fields are empty, please enter all required details.", Toast.LENGTH_LONG).show();
+                } else {
+                    HashMap<String, String> params = new HashMap<String, String>();
+
+                    params.put(TableDefs.Books.COLUMN_TITLE, title);
+                    params.put(TableDefs.Books.COLUMN_AUTHORS, authors);
+                    params.put(TableDefs.Books.COLUMN_COMMENTS, comments);
+                    params.put(TableDefs.Books.COLUMN_CONDITION, condition);
+                    params.put(TableDefs.Books.COLUMN_COURSENO, courseno);
+                    params.put(TableDefs.Books.COLUMN_DEPARTMENT, dept);
+                    params.put(TableDefs.Books.COLUMN_ISBN, isbn);
+                    params.put(TableDefs.Books.COLUMN_EDITION, edition.toString());
+                    params.put(TableDefs.Books.COLUMN_PRICE, price.toString());
                 }
-
-
             }
         });
-    }
-    public String getBookTitle(){
-        return bookTitle;
-    }
-    public String getAuthor(){
-        return author;
-    }
-    public String getEdition(){
-        return edition;
-    }
-    public String getYear(){
-        return year;
-    }
-    public String getCondition(){
-        return condition;
-    }
-    public String getDept(){
-        return dept;
-    }
-    public int getClassnum(){
-        return classNum;
-    }
-    public String getComments(){
-        return comments;
-    }
-    public Double getPrice(){
-        return price;
-    }
-    public long getISBN(){
-        return ISBN;
     }
 }
