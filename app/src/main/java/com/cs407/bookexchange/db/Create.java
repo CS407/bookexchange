@@ -61,15 +61,7 @@ public class Create {
         }
     }
 
-    private static boolean addBook(HashMap<String, String> params) {
-        boolean retVal = false;
-
-        return retVal;
-    }
-
-    private static boolean addUser(HashMap<String, String> params) {
-        String targetUrl = Constants.urlCreateUser;
-
+    private static boolean doAdd(String targetUrl, HashMap<String, String> params) {
         boolean retVal = false;
 
         try {
@@ -112,6 +104,14 @@ public class Create {
         }
 
         return retVal;
+    }
+
+    private static boolean addBook(HashMap<String, String> params) {
+        return doAdd(Constants.urlCreateBook, params);
+    }
+
+    private static boolean addUser(HashMap<String, String> params) {
+        return doAdd(Constants.urlCreateUser, params);
     }
 
     private static boolean addBuyer(HashMap<String, String> params) {
