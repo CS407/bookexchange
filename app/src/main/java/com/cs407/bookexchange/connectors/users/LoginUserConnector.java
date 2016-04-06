@@ -45,7 +45,7 @@ public class LoginUserConnector extends AsyncTask<HashMap<String, String>, Void,
 
             ((Activity)context).finish();
         } else {
-            Toast.makeText(context, "Login failed.Incorrect username/password.", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Login failed. Incorrect username/password.", Toast.LENGTH_LONG).show();
         }
 
         super.onPostExecute(retVal);
