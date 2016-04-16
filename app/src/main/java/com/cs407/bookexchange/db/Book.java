@@ -181,12 +181,12 @@ public class Book implements Parcelable{
             book.set_title(json.getString(TableDefs.Books.COLUMN_TITLE));
             book.set_authors(json.getString(TableDefs.Books.COLUMN_AUTHORS));
             book.set_isbn(json.getString(TableDefs.Books.COLUMN_ISBN));
-            book.set_condition(Condition.valueOf(json.getString(TableDefs.Books.COLUMN_CONDITION)));
             book.set_price(json.getDouble(TableDefs.Books.COLUMN_PRICE));
             book.set_comments(json.getString(TableDefs.Books.COLUMN_COMMENTS));
             book.set_dept(json.getString(TableDefs.Books.COLUMN_DEPARTMENT));
             book.set_courseno(json.getString(TableDefs.Books.COLUMN_COURSENO));
             book.set_edition(json.getString(TableDefs.Books.COLUMN_EDITION));
+            book.set_condition(Condition.valueOf(json.getString(TableDefs.Books.COLUMN_CONDITION))); //okay
         }catch(IllegalArgumentException ex) {
             book.set_condition(Condition.USED);
         }
