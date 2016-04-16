@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.cs407.bookexchange.R;
+import com.cs407.bookexchange.connectors.books.GetBooksForUserConnector;
+import com.cs407.bookexchange.db.TableDefs;
+
+import java.util.HashMap;
 
 public class SellerManagerActivity extends AppCompatActivity {
     @Override
@@ -14,8 +18,13 @@ public class SellerManagerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller_manager);
 
-        Button newListingButton =(Button)findViewById(R.id.addbtn);
-        newListingButton.setOnClickListener(new View.OnClickListener() {
+        GetBooksForUserConnector connector = new GetBooksForUserConnector();
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put(TableDefs.Books.COLUMN_USERID, "48");
+        connector.execute(params);
+
+        Button newListing = (Button)findViewById(R.id.addBookSellerManagerActivity);
+        newListing.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent in = new Intent(getApplicationContext(), NewListingActivity.class);
                 startActivity(in);

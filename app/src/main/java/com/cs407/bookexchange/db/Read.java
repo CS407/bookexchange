@@ -13,7 +13,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
 import org.json.*;
 
@@ -59,19 +58,12 @@ public class Read {
         }
     }
 
-    private static ArrayList<Object> getBookSet(HashMap<String, String> params) {
-        ArrayList<Object> bookSet = null;
-
-        return bookSet;
-    }
-
-    private static ArrayList<Object> getUserSet(HashMap<String, String> params) {
-        String targetUrl = Constants.urlReadUser;
-        ArrayList<Object> users = null;
+    private static ArrayList<Object> doRead(HashMap<String, String> params, String targetUrl, String objKey) {
+        ArrayList<Object> data = null;
 
         try {
-            URL userGetUrl = new URL(targetUrl);
-            HttpURLConnection urlConnection = (HttpURLConnection)userGetUrl.openConnection();
+            URL url = new URL(targetUrl);
+            HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
 
             byte[] postData = getPostBytes(params);
 
@@ -88,16 +80,34 @@ public class Read {
             if(urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 BufferedReader connReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 
-                connReader.readLine(); connReader.readLine();
+                connReader.readLine();
+                if (objKey == Constants.RESPONSE_KEY_USER) {
+                    connReader.readLine();
+                }
                 String response = connReader.readLine();
                 JSONObject respJson = new JSONObject(response);
                 String success = respJson.getString(Constants.RESPONSE_KEY_SUCCESS);
                 if (success.equalsIgnoreCase("1")) {
-                    users = new ArrayList<Object>();
-                    String userJson = respJson.getString(Constants.RESPONSE_KEY_USER);
-                    JSONObject user = new JSONObject(userJson);
+                    data = new ArrayList<Object>();
 
-                    users.add(User.JsonToObj(user));
+
+                    switch (objKey) {
+                        case Constants.RESPONSE_KEY_USER:{
+                            String objJson = respJson.getString(objKey);
+                            JSONObject obj = new JSONObject(objJson);
+                            data.add(User.JsonToObj(obj));
+                        }
+                        break;
+                        case Constants.RESPONSE_KEY_BOOK: {
+                            JSONArray array = respJson.getJSONArray(Constants.RESPONSE_KEY_BOOK);
+
+                            for(int idx = 0; idx < array.length(); idx++) {
+                                JSONObject obj = array.getJSONObject(idx);
+                                data.add(Book.JsonToObj(obj));
+                            }
+                        }
+                        break;
+                    }
                 }
                 connReader.close();
             }
@@ -111,7 +121,22 @@ public class Read {
             Log.d("[DB] JSON ", jsoe.getMessage());
         }
 
-        return users;
+        return data;
+    }
+
+    private static ArrayList<Object> getBookSet(HashMap<String, String> params) {
+        String url;
+
+        if(params.containsKey(TableDefs.Books.COLUMN_USERID))
+            url = Constants.urlReadBooksForUser;
+        else
+            url = Constants.urlReadBooksForSearch;
+
+        return doRead(params, url, Constants.RESPONSE_KEY_BOOK);
+    }
+
+    private static ArrayList<Object> getUserSet(HashMap<String, String> params) {
+        return doRead(params, Constants.urlReadUser, Constants.RESPONSE_KEY_USER);
     }
 
     private static ArrayList<Object> getBuyerSet(HashMap<String, String> params) {
