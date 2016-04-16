@@ -2,6 +2,10 @@ package com.cs407.bookexchange.db;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by ssunny7 on 2/29/2016.
@@ -151,4 +155,44 @@ public class Book implements Parcelable{
     public void set_edition(String _edition) {
         this._edition = _edition;
     }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+//KAD TODO include userid???
+        sb.append(TableDefs.Books.COLUMN_TITLE+ ":" + _title);
+        sb.append(TableDefs.Books.COLUMN_AUTHORS + ":" + _authors);
+        sb.append(TableDefs.Books.COLUMN_ISBN + ":" + _isbn);
+        sb.append(TableDefs.Books.COLUMN_CONDITION + ":" + _condition);
+        sb.append(TableDefs.Books.COLUMN_PRICE + ":" + _price);
+        sb.append(TableDefs.Books.COLUMN_COMMENTS+ ":" + _comments);
+        sb.append(TableDefs.Books.COLUMN_DEPARTMENT+ ":" + _dept);
+        sb.append(TableDefs.Books.COLUMN_COURSENO + ":" + _courseno);
+        sb.append(TableDefs.Books.COLUMN_EDITION + ":" + _edition);
+
+        return sb.toString();
+    }
+
+    public static Book JsonToObj(JSONObject json) {
+        Book book = new Book();
+
+        try {
+            book.set_title(json.getString(TableDefs.Books.COLUMN_TITLE));
+            book.set_authors(json.getString(TableDefs.Books.COLUMN_AUTHORS));
+            book.set_isbn(json.getString(TableDefs.Books.COLUMN_ISBN));
+            book.set_condition(Condition.valueOf(json.getString(TableDefs.Books.COLUMN_CONDITION)));
+            book.set_price(json.getDouble(TableDefs.Books.COLUMN_PRICE));
+            book.set_comments(json.getString(TableDefs.Books.COLUMN_COMMENTS));
+            book.set_dept(json.getString(TableDefs.Books.COLUMN_DEPARTMENT));
+            book.set_courseno(json.getString(TableDefs.Books.COLUMN_COURSENO));
+            book.set_edition(json.getString(TableDefs.Books.COLUMN_EDITION));
+        }catch(IllegalArgumentException ex) {
+            book.set_condition(Condition.USED);
+        }
+        catch (JSONException jsoe) {
+            Log.d("[BOOK]", jsoe.getMessage());
+        }
+
+        return book;
+    }
+
 }
