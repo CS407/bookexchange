@@ -62,9 +62,58 @@ public class Read {
     }
 
     private static ArrayList<Object> getBookSet(HashMap<String, String> params) {
-        //TODO KAD fill this in
 
         ArrayList<Object> bookSet = null;
+        String targetUrl = Constants.urlReadBook;
+
+        try {
+            //Contact the URL to read books with the given params
+            URL userGetUrl = new URL(targetUrl);
+            HttpURLConnection urlConnection = (HttpURLConnection)userGetUrl.openConnection();
+
+            byte[] postData = getPostBytes(params);
+
+            urlConnection.setDoOutput(true);
+            urlConnection.setDoInput(true);
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            urlConnection.setRequestProperty("Content-Length", String.valueOf(postData.length));
+            OutputStream connWriter = urlConnection.getOutputStream();
+            connWriter.write(postData);
+            connWriter.flush();
+            connWriter.close();
+
+            if(urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                //Read response
+                BufferedReader connReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+
+                connReader.readLine(); connReader.readLine();
+                String response = connReader.readLine();
+                JSONObject respJson = new JSONObject(response);
+                String success = respJson.getString(Constants.RESPONSE_KEY_SUCCESS);
+                if (success.equalsIgnoreCase("1")) {
+                    bookSet = new ArrayList<Object>();
+
+                    //Get array of JSON books
+                    JSONArray bookArr = respJson.getJSONArray(Constants.RESPONSE_KEY_BOOKS);
+
+                    //Get actual Book objects
+                    for(int i = 0; i<bookArr.length(); i++){
+                        Book book = Book.JsonToObj(bookArr.getJSONObject(i));
+                        bookSet.add(book);
+                    }
+                }
+                connReader.close();
+            }
+
+            urlConnection.disconnect();
+        } catch (MalformedURLException mulre) {
+            Log.d("book[DB] Malformed URL ", mulre.getMessage());
+        } catch (IOException ioe) {
+            Log.d("book[DB] IO ", ioe.getMessage());
+        } catch (JSONException jsoe) {
+            Log.d("book[DB] JSON ", jsoe.getMessage());
+        }
 
         return bookSet;
     }
