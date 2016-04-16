@@ -87,9 +87,12 @@ public class Read {
                 //Read response
                 BufferedReader connReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 
-                connReader.readLine(); connReader.readLine();
+                //connReader.readLine();
+                // //connReader.readLine();
                 String response = connReader.readLine();
+               // Log.w("KAD book[DB] response ", response);
                 JSONObject respJson = new JSONObject(response);
+                Log.w("KAD book[DB] respJSON ", respJson.toString());
                 String success = respJson.getString(Constants.RESPONSE_KEY_SUCCESS);
                 if (success.equalsIgnoreCase("1")) {
                     bookSet = new ArrayList<Object>();
@@ -97,9 +100,13 @@ public class Read {
                     //Get array of JSON books
                     JSONArray bookArr = respJson.getJSONArray(Constants.RESPONSE_KEY_BOOKS);
 
+                    Log.w("KAD book[DB] bookArr ", bookArr.toString());
+
                     //Get actual Book objects
                     for(int i = 0; i<bookArr.length(); i++){
-                        Book book = Book.JsonToObj(bookArr.getJSONObject(i));
+                        JSONObject currBook = bookArr.getJSONObject(i);
+                        Log.w("KAD book[DB] currBook ", currBook.toString());
+                        Book book = Book.JsonToObj(currBook);
                         bookSet.add(book);
                     }
                 }
@@ -108,13 +115,14 @@ public class Read {
 
             urlConnection.disconnect();
         } catch (MalformedURLException mulre) {
-            Log.d("book[DB] Malformed URL ", mulre.getMessage());
+            Log.w("book[DB] Malformed URL ", mulre.getMessage());
         } catch (IOException ioe) {
-            Log.d("book[DB] IO ", ioe.getMessage());
+            Log.w("book[DB] IO ", ioe.getMessage());
         } catch (JSONException jsoe) {
-            Log.d("book[DB] JSON ", jsoe.getMessage());
+            Log.w("book[DB] JSON ", jsoe.getMessage());
         }
 
+        Log.w("book[DB] bookSet: ", bookSet.toString());
         return bookSet;
     }
 

@@ -159,15 +159,17 @@ public class Book implements Parcelable{
     public String toString() {
         StringBuilder sb = new StringBuilder();
 //KAD TODO include userid???
-        sb.append(TableDefs.Books.COLUMN_TITLE+ ":" + _title);
-        sb.append(TableDefs.Books.COLUMN_AUTHORS + ":" + _authors);
-        sb.append(TableDefs.Books.COLUMN_ISBN + ":" + _isbn);
-        sb.append(TableDefs.Books.COLUMN_CONDITION + ":" + _condition);
-        sb.append(TableDefs.Books.COLUMN_PRICE + ":" + _price);
-        sb.append(TableDefs.Books.COLUMN_COMMENTS+ ":" + _comments);
-        sb.append(TableDefs.Books.COLUMN_DEPARTMENT+ ":" + _dept);
-        sb.append(TableDefs.Books.COLUMN_COURSENO + ":" + _courseno);
-        sb.append(TableDefs.Books.COLUMN_EDITION + ":" + _edition);
+
+        sb.append("Book: ");
+        sb.append(TableDefs.Books.COLUMN_TITLE+ ":" + _title + " ");
+        sb.append(TableDefs.Books.COLUMN_AUTHORS + ":" + _authors + " ");
+        sb.append(TableDefs.Books.COLUMN_ISBN + ":" + _isbn + " ");
+        sb.append(TableDefs.Books.COLUMN_CONDITION + ":" + _condition + " ");
+        sb.append(TableDefs.Books.COLUMN_PRICE + ":" + _price + " ");
+        sb.append(TableDefs.Books.COLUMN_COMMENTS+ ":" + _comments + " ");
+        sb.append(TableDefs.Books.COLUMN_DEPARTMENT+ ":" + _dept + " ");
+        sb.append(TableDefs.Books.COLUMN_COURSENO + ":" + _courseno + " ");
+        sb.append(TableDefs.Books.COLUMN_EDITION + ":" + _edition + "\n");
 
         return sb.toString();
     }
