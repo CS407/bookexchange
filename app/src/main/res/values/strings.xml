@@ -38,4 +38,12 @@
     <string name="username">username</string>
     <string name="password">password</string>
     <string name="loginButton1">loginButton1</string>
+
+    <!-- Strings for book search results-->
+    <string name="bookBy">By:</string>
+    <string name="isbn_text">ISBN:</string>
+    <string name="condition_text">Condition:</string>
+    <string name="price_text">Price:</string>
+    <string name="comments_text">Comments:</string>
+    <string name="course_text">Related Course:</string>
 </resources>

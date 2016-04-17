@@ -1,11 +1,17 @@
 package com.cs407.bookexchange.UserUI;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.cs407.bookexchange.R;
 import com.cs407.bookexchange.db.Book;
@@ -32,7 +38,8 @@ public class ResultsActivity extends AppCompatActivity {
             resultBooks = searchIntent.getParcelableArrayListExtra(Constants.BOOKS_RESULTS_KEY);
             Log.w("{RESACT}", resultBooks.toString());
 
-            ArrayAdapter<Book> listAdapter = new ArrayAdapter<Book>(this, android.R.layout.simple_list_item_1, resultBooks);
+           // ArrayAdapter<Book> listAdapter = new ArrayAdapter<Book>(this, android.R.layout.simple_list_item_1, resultBooks);
+            BookAdapter listAdapter = new BookAdapter(this, R.layout.results_list_item, resultBooks);
             resultsView.setAdapter(listAdapter);
 
 
@@ -44,14 +51,5 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
     }
-
-//    public class ResultsAdapter extends ArrayAdapter{
-//
-//
-//
-//    }
-
-
-
 
 }

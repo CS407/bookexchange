@@ -22,6 +22,12 @@ public class Book implements Parcelable{
         _dept = in.readString();
         _courseno = in.readString();
         _edition = in.readString();
+        try{
+            _condition = Condition.valueOf(in.readString());
+        }catch(IllegalArgumentException ex){
+            //default
+            _condition = Condition.USED;
+        }
     }
 
     public static final Creator<Book> CREATOR = new Creator<Book>() {
@@ -52,11 +58,26 @@ public class Book implements Parcelable{
         dest.writeString(_dept);
         dest.writeString(_courseno);
         dest.writeString(_edition);
+        dest.writeString((_condition == null) ? "USED" : _condition.name());
+        //dest.writeParcelable(_condition, 0);
+//        _condition.writeToParcel(dest, 0);
     }
 
-    public enum Condition {
-        NEW,
-        USED
+    public enum Condition //implements Parcelable {
+    {NEW, USED;
+
+        public String toString(){
+            String condStr = this.name();
+            return condStr.charAt(0) + condStr.substring(1).toLowerCase();
+        }
+
+//        @Override
+//        public int describeContents() {             return 0;             }
+//
+//        @Override
+//        public void writeToParcel(Parcel dest, int flags) {
+//            dest.writeString(this.name());
+//        }
     };
 
     private String _bookid;
