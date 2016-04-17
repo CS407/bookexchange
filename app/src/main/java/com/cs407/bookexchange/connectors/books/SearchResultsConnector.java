@@ -36,12 +36,13 @@ public class SearchResultsConnector extends AsyncTask<HashMap<String, String>, V
     @Override
     protected void onPostExecute(Boolean retVal) {
         Log.d("[SRC]", "Search " + (retVal.booleanValue()?"successful":"failed"));
+        Log.w("[SRC]bookResults:", bookResults.toString());
 
 //        if(retVal.booleanValue()) { //success; we have a list of results
-
+//TODO test separately: 1. passing array of books
             Intent resultsIntent = new Intent(context, ResultsActivity.class);
-            resultsIntent.putExtra("foundBooks", foundBooks);
-            resultsIntent.putParcelableArrayListExtra("books", bookResults);
+            resultsIntent.putExtra(Constants.BOOK_SEARCH_STATUS, foundBooks);
+            resultsIntent.putParcelableArrayListExtra(Constants.BOOKS_RESULTS_KEY, bookResults);
             context.startActivity(resultsIntent);
 
             ((Activity)context).finish();
@@ -62,14 +63,16 @@ public class SearchResultsConnector extends AsyncTask<HashMap<String, String>, V
     protected Boolean doInBackground(HashMap<String, String>... params) {
         ArrayList<Object> books = Read.executeRead(Constants.CRUDObject.BOOK, params[0]);
 
-        if (books != null && books.size() == 1) {
+        Log.w("[SRC] books looks like:", books.toString());
+
+        if (books != null) {
             foundBooks = true;
             for(int i = 0; i<books.size(); i++){
                 bookResults.add((Book)books.get(i));
             }
-
             return true;
-        } else {
+        }
+        else {
             foundBooks = false;
             return false;
         }

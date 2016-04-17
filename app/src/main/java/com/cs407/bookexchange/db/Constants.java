@@ -34,4 +34,8 @@ public class Constants {
     public static String RESPONSE_KEY_SUCCESS = "success";
     public static String RESPONSE_KEY_USER = "user";
     public static String RESPONSE_KEY_BOOKS = "books";
+
+
+    public static String BOOK_SEARCH_STATUS = "foundBooks";
+    public static String BOOKS_RESULTS_KEY = "bookResults";
 }

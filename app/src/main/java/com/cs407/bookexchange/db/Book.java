@@ -169,7 +169,7 @@ public class Book implements Parcelable{
         sb.append(TableDefs.Books.COLUMN_COMMENTS+ ":" + _comments + " ");
         sb.append(TableDefs.Books.COLUMN_DEPARTMENT+ ":" + _dept + " ");
         sb.append(TableDefs.Books.COLUMN_COURSENO + ":" + _courseno + " ");
-        sb.append(TableDefs.Books.COLUMN_EDITION + ":" + _edition + "\n");
+        sb.append(TableDefs.Books.COLUMN_EDITION + ":" + _edition);
 
         return sb.toString();
     }

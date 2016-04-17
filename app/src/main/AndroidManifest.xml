@@ -19,17 +19,22 @@
             android:name=".UserUI.LoginActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            />
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         <activity android:name=".UserUI.NewListingActivity" />
         <activity android:name=".UserUI.RegisterActivity" />
         <activity android:name=".UserUI.SellerManagerActivity" />
-        <activity android:name=".UserUI.SearchActivity" />
+        <activity android:name=".UserUI.SearchActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".UserUI.StartActivity" />
         <activity android:name=".UserUI.ResultsActivity" />
         <activity android:name=".UserUI.textActivity"></activity>
