@@ -23,7 +23,7 @@ public class Constants {
     public static String urlUpdateUser = "";
     public static String urlUpdateBuyer = "";
 
-    public static String urlDeleteBook = "";
+    public static String urlDeleteBook = "http://pages.cs.wisc.edu/~ssunny/webserver/delete_book.php";
     public static String urlDeleteUser = "";
     public static String urlDeleteBuyer = "";
 

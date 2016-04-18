@@ -1,6 +1,8 @@
 package com.cs407.bookexchange.UserUI;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.cs407.bookexchange.R;
+import com.cs407.bookexchange.connectors.books.DeleteBookConnector;
 import com.cs407.bookexchange.db.Book;
 
 import java.util.ArrayList;
@@ -21,12 +24,36 @@ public class SellerAdapter extends ArrayAdapter<Book> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         Book book = getItem(position);
 
         if(convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.listelement_seller_book, parent, false);
         }
+
+        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                new AlertDialog.Builder(getContext()).
+                setTitle("Delete Book").
+                setMessage("Do you really want to remove the selected book posting?").
+                setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        DeleteBookConnector deleteBookConnector = new DeleteBookConnector(SellerAdapter.this, position);
+                        deleteBookConnector.execute(getItem(position).get_bookid());
+                    }
+                }).
+                setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //
+                    }
+                }).show();
+
+                return true;
+            }
+        });
 
         TextView title = (TextView)convertView.findViewById(R.id.sellerBookTitle);
         title.setText(book.get_title());
