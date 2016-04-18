@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">bookexchange</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Book Exchange</string>
     <string name="title_activity_login_register">LoginRegister</string>
     <string name="title_activity_login">Sign in</string>
 
