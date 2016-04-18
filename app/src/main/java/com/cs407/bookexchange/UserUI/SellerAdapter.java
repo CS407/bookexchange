@@ -30,6 +30,23 @@ public class SellerAdapter extends ArrayAdapter<Book> {
 
         TextView title = (TextView)convertView.findViewById(R.id.sellerBookTitle);
         title.setText(book.get_title());
+        TextView authors = (TextView)convertView.findViewById(R.id.sellerBookAuthors);
+        authors.setText(book.get_authors());
+        TextView price = (TextView)convertView.findViewById(R.id.sellerBookPrice);
+        price.setText("$ " + ((Double)book.get_price()).toString());
+        TextView condition = (TextView)convertView.findViewById(R.id.sellerBookCondition);
+        condition.setText("Condition: " + book.get_condition().name());
+        TextView deptCourse = (TextView)convertView.findViewById(R.id.sellerBookDeptCourse);
+        deptCourse.setText(book.get_dept() + " " + book.get_courseno());
+        TextView edition = (TextView)convertView.findViewById(R.id.sellerBookEdition);
+        String append = "th";
+        if(book.get_edition() == 1)
+            append = "st";
+        else if(book.get_edition() == 2)
+            append = "nd";
+        else if(book.get_edition() == 3)
+            append = "rd";
+        edition.setText(book.get_edition() + append + " edition");
 
         return convertView;
     }
