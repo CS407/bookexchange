@@ -19,14 +19,12 @@
     <string name="title_activity_register">register</string>
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item>Home</item>
-        <item>Find People</item>
-        <item>Photos</item>
-        <item>Communities</item>
-        <item>Pages</item>
-        <item>What\'s Hot</item>
+        <item>Buy</item>
+        <item>Sell</item>
+        <item>Contacts</item>
     </string-array>
-
+    <string name="drawer_opened">Opened</string>
+    <string name="drawer_closed">Closed</string>
     <string-array name="Deptnumber">
         <item> computer sciences</item>
         <item> english</item>
@@ -38,7 +36,10 @@
     <string name="username">username</string>
     <string name="password">password</string>
     <string name="loginButton1">loginButton1</string>
+    <string name="title_activity_slidingmenu">slidingmenuActivity</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <!-- Strings for book search results-->
     <string name="bookBy">By:</string>
     <string name="isbn_text">ISBN:</string>
