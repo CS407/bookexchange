@@ -10,7 +10,8 @@ public class Constants {
         BUYER,
     };
 
-    public static String urlReadBook = "";
+    public static String urlReadBooksForUser = "http://pages.cs.wisc.edu/~ssunny/webserver/get_books_for_user.php";
+    public static String urlReadBooksForSearch = "";
     public static String urlReadUser = "http://pages.cs.wisc.edu/~ssunny/webserver/attempt_login.php";
     public static String urlReadBuyer = "";
 
@@ -22,11 +23,11 @@ public class Constants {
     public static String urlUpdateUser = "";
     public static String urlUpdateBuyer = "";
 
-    public static String urlDeleteBook = "";
+    public static String urlDeleteBook = "http://pages.cs.wisc.edu/~ssunny/webserver/delete_book.php";
     public static String urlDeleteUser = "";
     public static String urlDeleteBuyer = "";
 
-    public static String RESPONSE_KEY_SUCCESS = "success";
-    public static String RESPONSE_KEY_USER = "user";
-    public static String RESPONSE_KEY_BOOK = "book";
+    public static final String RESPONSE_KEY_SUCCESS = "success";
+    public static final String RESPONSE_KEY_USER = "user";
+    public static final String RESPONSE_KEY_BOOK = "books";
 }

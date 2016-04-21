@@ -12,17 +12,17 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
+        android:id="@+id/bookListSellerManagerActivity"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/addbtn" />
+        android:layout_below="@+id/addBookSellerManagerActivity" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add New Book"
-        android:id="@+id/addbtn"
+        android:id="@+id/addBookSellerManagerActivity"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
