@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingTop="5dp"
     tools:context=".UserUI.LoginActivity">
 
     <TextView
@@ -16,7 +14,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Login to Book Exchange"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="0dp"
+        android:id="@+id/etTitle"
         android:padding="10dp"/>
     <EditText
         android:layout_width="match_parent"
@@ -24,11 +23,15 @@
         android:id="@+id/etUserNameLoginActivity"
         android:hint="UserName"
         android:layout_gravity="start"
-        android:layout_margin="10dp" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/etTitle"
+        android:layout_marginTop="0dp"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/etPasswordLoginActivity"
+        android:layout_below="@+id/etUserNameLoginActivity"
         android:hint="Password"
         android:inputType="textPassword"
         android:layout_margin="10dp"
@@ -36,9 +39,10 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="25dp"
         android:id="@+id/btnLoginLoginActivity"
         android:layout_gravity="center"
+        android:layout_marginTop="150dp"
+        android:layout_alignParentBottom="true"
         android:text="LOGIN"/>
 
-</LinearLayout>
+</RelativeLayout>
