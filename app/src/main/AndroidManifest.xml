@@ -16,9 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".UserUI.LoginActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".UserUI.SlidingMenuActivity"
+            android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -32,7 +31,7 @@
         <activity android:name=".UserUI.SearchActivity" />
         <activity android:name=".UserUI.StartActivity" />
         <activity android:name=".UserUI.ResultsActivity" />
-        <activity android:name=".UserUI.textActivity"></activity>
+        <activity android:name=".UserUI.textActivity" />
     </application>
 
 </manifest>
