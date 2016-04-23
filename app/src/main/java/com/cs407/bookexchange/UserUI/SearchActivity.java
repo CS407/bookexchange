@@ -2,31 +2,30 @@ package com.cs407.bookexchange.UserUI;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.TextView;
 
 import com.cs407.bookexchange.R;
+import com.cs407.bookexchange.connectors.books.SearchResultsConnector;
+import com.cs407.bookexchange.db.TableDefs;
+
+import java.util.HashMap;
 
 public class SearchActivity extends AppCompatActivity {
-    private ListView mDrawerList;
-    private ArrayAdapter<String> mAdapter;
+    //    String search_title;
+//    String search_department; //TODO add field so they can search by title, department -> use that neat spinner :)
+    String search_ISBN;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        String[] menu = {"first", "second", "third", "fourth"};
-        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView)findViewById(R.id.left_drawer);
-
-        mAdapter = new ArrayAdapter<String>(this,R.layout.activity_search, menu);
-        mDrawerList.setAdapter(mAdapter);
-        //mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        TextView ISBNText = (TextView) findViewById(R.id.numISBN);
+        search_ISBN = ISBNText.getText().toString();
 
         Button managerButton =(Button)findViewById(R.id.managerButton);
         managerButton.setOnClickListener(new View.OnClickListener() {
@@ -39,14 +38,17 @@ public class SearchActivity extends AppCompatActivity {
         Button searchButton =(Button)findViewById(R.id.searchButton);
         searchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.d("SearchActivity", "CLicked search");
+                HashMap<String, String> params = new HashMap<String, String>();
 
-                //get search results
+                params.put(TableDefs.Books.COLUMN_ISBN, search_ISBN);
+                //params.put(TableDefs.Books.COLUMN_TITLE, search_title );
+                //params.put(TableDefs.Books.COLUMN_DEPARTMENT, search_dept);
 
-                Intent in = new Intent(getApplicationContext(), ResultsActivity.class);
-                startActivity(in);
+                SearchResultsConnector searchResultsConnector = new SearchResultsConnector(SearchActivity.this);
+                searchResultsConnector.execute(params); //ResultsActivity will be called
             }
         });
 
     }
+
 }

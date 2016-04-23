@@ -11,7 +11,7 @@ public class Constants {
         SELLER
     };
 
-    public static String urlReadBook = "";
+    public static String urlReadBook = "http://pages.cs.wisc.edu/~dudenas/search_results_text.php"; //KAD TODO change to the not-hardcoded one
     public static String urlReadUser = "http://pages.cs.wisc.edu/~ssunny/webserver/attempt_login.php";
     public static String urlReadBuyer = "";
     public static String urlReadSeller = "";
@@ -33,4 +33,9 @@ public class Constants {
 
     public static String RESPONSE_KEY_SUCCESS = "success";
     public static String RESPONSE_KEY_USER = "user";
+    public static String RESPONSE_KEY_BOOKS = "books";
+
+
+    public static String BOOK_SEARCH_STATUS = "foundBooks";
+    public static String BOOKS_RESULTS_KEY = "bookResults";
 }
