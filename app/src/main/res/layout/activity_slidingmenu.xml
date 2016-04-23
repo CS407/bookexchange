@@ -4,12 +4,12 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
     android:orientation="vertical">
-<RelativeLayoutLayout
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main_content">
 
-</RelativeLayoutLayout>
+</RelativeLayout>
 
     <ListView
         android:layout_width="200dp"
