@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".UserUI.SlidingMenuActivity">
+            android:name=".UserUI.LoginActivity">
             <!--@string/title_activity_main"-->
             <!--android:name=".UserUI.SearchActivity">-->
 
@@ -29,7 +29,7 @@
         <activity android:name=".UserUI.NewListingActivity" />
         <activity android:name=".UserUI.RegisterActivity" />
         <activity android:name=".UserUI.SellerManagerActivity" />
-        <activity android:name=".UserUI.LoginActivity"/>
+        <!--<activity android:name=".UserUI.LoginActivity"/>-->
         <activity android:name=".UserUI.SearchActivity" />
         <activity android:name=".UserUI.StartActivity" />
         <activity android:name=".UserUI.ResultsActivity" />

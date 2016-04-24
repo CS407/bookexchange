@@ -69,6 +69,7 @@ public class ResultsActivity extends AppCompatActivity {
         }
 
 
+
         listViewSliding=(ListView)findViewById(R.id.lv_sliding_menu);
         drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
 
@@ -123,7 +124,6 @@ public class ResultsActivity extends AppCompatActivity {
                 invalidateOptionsMenu();
             }
         };
-
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
     }
 

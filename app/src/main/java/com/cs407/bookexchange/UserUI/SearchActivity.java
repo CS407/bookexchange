@@ -50,13 +50,13 @@ public class SearchActivity extends AppCompatActivity {
         TextView ISBNText = (TextView) findViewById(R.id.numISBN);
         search_ISBN = ISBNText.getText().toString();
 
-        Button managerButton = (Button) findViewById(R.id.managerButton);
-        managerButton.setOnClickListener(new View.OnClickListener() {
+        //Button managerButton = (Button) findViewById(R.id.managerButton);
+        /*managerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent in = new Intent(getApplicationContext(), SellerManagerActivity.class);
                 startActivity(in);
             }
-        });
+        });*/
 
         Button searchButton = (Button) findViewById(R.id.searchButton);
         searchButton.setOnClickListener(new View.OnClickListener() {
