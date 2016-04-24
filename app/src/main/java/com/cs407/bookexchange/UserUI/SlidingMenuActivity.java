@@ -2,6 +2,7 @@ package com.cs407.bookexchange.UserUI;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 //import android.support.v4.app.Fragment;
@@ -25,13 +26,12 @@ import com.cs407.bookexchange.model.ItemSlideMenu;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SlidingMenuActivity extends ActionBarActivity {
+public class SlidingMenuActivity extends AppCompatActivity {
 
     private List<ItemSlideMenu> listSliding;
     private SlidingMenuAdapter adapter;
     private ListView listViewSliding;
     private DrawerLayout drawerLayout;
-
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
 
@@ -46,13 +46,14 @@ public class SlidingMenuActivity extends ActionBarActivity {
         listSliding=new ArrayList<>();
 
 
-        listSliding.add(new ItemSlideMenu(R.mipmap.ic_launcher,"Setting"));
+        listSliding.add(new ItemSlideMenu(R.mipmap.ic_launcher,"Buy"));
+        listSliding.add(new ItemSlideMenu(R.mipmap.ic_launcher,"Sell"));
+        listSliding.add(new ItemSlideMenu(R.mipmap.ic_launcher,"Contacts"));
+        listSliding.add(new ItemSlideMenu(R.mipmap.ic_launcher,"Logout"));
+
         adapter= new SlidingMenuAdapter(this,listSliding);
         listViewSliding.setAdapter(adapter);
-        //getActionBar().setDisplayHomeAsUpEnabled(true);
-        if(getActionBar() == null){
-            Log.d("problem", "ah");
-        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //set title
         setTitle(listSliding.get(0).getTitle());
@@ -63,7 +64,7 @@ public class SlidingMenuActivity extends ActionBarActivity {
 
 
         //display fragment when start
-        replaceFragment(0);
+        replaceFragment(-1);
 
         listViewSliding.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -113,23 +114,34 @@ public class SlidingMenuActivity extends ActionBarActivity {
     }
 
     @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        actionBarDrawerToggle.syncState();
-    }
+                protected void onPostCreate(Bundle savedInstanceState) {
+                super.onPostCreate(savedInstanceState);
+                actionBarDrawerToggle.syncState();
+            }
 
 
-    private void replaceFragment(int pos){
+        private void replaceFragment(int pos){
 
-        Fragment fragment = null;
-
-        switch(pos){
-            case 0:
-                fragment = new Fragment1();
-                break;
-            default:
-                fragment=new Fragment1();
-                break;
+            Fragment fragment = null;
+            Intent in;
+            switch(pos){
+                case 0:
+                    in = new Intent(getApplicationContext(), SearchActivity.class);
+                    startActivity(in);
+                    break;
+                case 1:
+                    in = new Intent(getApplicationContext(), SellerManagerActivity.class);
+                    startActivity(in);
+                    break;
+                case 2:
+                    fragment=new Fragment1();
+                    break;
+                case 3:
+                    fragment=new Fragment1();
+                    break;
+                default:
+                    fragment=new Fragment1();
+                    break;
 
         }
         if(null!=fragment){
