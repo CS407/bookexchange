@@ -12,6 +12,7 @@ public class Constants {
 
     public static String urlReadBooksForUser = "http://pages.cs.wisc.edu/~ssunny/webserver/get_books_for_user.php";
     public static String urlReadBooksForSearch = "";
+    public static String urlReadRequestsForUser = "http://pages.cs.wisc.edu/~ssunny/webserver/get_requests_for_user.php";
     public static String urlReadUser = "http://pages.cs.wisc.edu/~ssunny/webserver/attempt_login.php";
     public static String urlReadBuyer = "";
 
@@ -30,4 +31,6 @@ public class Constants {
     public static final String RESPONSE_KEY_SUCCESS = "success";
     public static final String RESPONSE_KEY_USER = "user";
     public static final String RESPONSE_KEY_BOOK = "books";
+
+    public static final String FLAG_CALLER_SELLER_MANAGER = "caller_seller_manager";
 }

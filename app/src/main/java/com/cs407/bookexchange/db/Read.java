@@ -127,8 +127,14 @@ public class Read {
     private static ArrayList<Object> getBookSet(HashMap<String, String> params) {
         String url;
 
-        if(params.containsKey(TableDefs.Books.COLUMN_USERID))
-            url = Constants.urlReadBooksForUser;
+        if(params.containsKey(TableDefs.Books.COLUMN_USERID)) {
+            if(params.containsKey(Constants.FLAG_CALLER_SELLER_MANAGER)) {
+                url = Constants.urlReadBooksForUser;
+                params.remove(Constants.FLAG_CALLER_SELLER_MANAGER);
+            }
+            else
+                url = Constants.urlReadRequestsForUser;
+        }
         else
             url = Constants.urlReadBooksForSearch;
 

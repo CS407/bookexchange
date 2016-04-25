@@ -27,6 +27,7 @@
         <activity android:name=".UserUI.LoginActivity" android:windowSoftInputMode="adjustPan" />
         <activity android:name=".UserUI.RegisterActivity" android:windowSoftInputMode="adjustPan" />
         <activity android:name=".UserUI.SellerManagerActivity" />
+        <activity android:name=".UserUI.PendingRequestsActivity" />
         <activity android:name=".UserUI.SearchActivity" />
         <activity android:name=".UserUI.NewListingActivity" android:windowSoftInputMode="adjustPan" ></activity>
     </application>
