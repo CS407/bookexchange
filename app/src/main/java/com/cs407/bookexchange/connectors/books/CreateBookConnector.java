@@ -1,6 +1,7 @@
 package com.cs407.bookexchange.connectors.books;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 
@@ -17,6 +18,7 @@ import java.util.HashMap;
 public class CreateBookConnector extends AsyncTask<HashMap<String, String>, Void, String> {
 
     private Context context;
+    private ProgressDialog progressDialog;
 
     public CreateBookConnector(Context _context) {
         context = _context;
@@ -25,15 +27,22 @@ public class CreateBookConnector extends AsyncTask<HashMap<String, String>, Void
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setTitle("Adding book to the database...");
+        progressDialog.show();
     }
 
     @Override
     protected void onPostExecute(String retVal) {
+        super.onPostExecute(retVal);
+        progressDialog.dismiss();
+
         if(retVal != null) {
             ((Activity)context).finish();
         }
-
-        super.onPostExecute(retVal);
     }
 
     @Override

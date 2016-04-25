@@ -1,5 +1,6 @@
 package com.cs407.bookexchange.connectors.books;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ import java.util.HashMap;
 public class DeleteBookConnector extends AsyncTask<String, Void, Boolean> {
     private SellerAdapter parent;
     private int position;
+    private ProgressDialog progressDialog;
 
     public DeleteBookConnector(SellerAdapter _parent, int _position) {
         parent = _parent;
@@ -26,10 +28,19 @@ public class DeleteBookConnector extends AsyncTask<String, Void, Boolean> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+
+        progressDialog = new ProgressDialog(parent.getContext());
+        progressDialog.setTitle("Deleting the book...");
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
     }
 
     @Override
     protected void onPostExecute(Boolean aBoolean) {
+        super.onPostExecute(aBoolean);
+        progressDialog.dismiss();
+
         if(!aBoolean.booleanValue()) {
             Log.d("[DBC]", "Book delete failed.");
         } else {
@@ -37,8 +48,6 @@ public class DeleteBookConnector extends AsyncTask<String, Void, Boolean> {
             parent.notifyDataSetChanged();
             Toast.makeText(parent.getContext(), "Book successfully deleted!", Toast.LENGTH_LONG).show();
         }
-
-        super.onPostExecute(aBoolean);
     }
 
     @Override
