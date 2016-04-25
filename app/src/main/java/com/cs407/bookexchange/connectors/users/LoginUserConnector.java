@@ -1,6 +1,7 @@
 package com.cs407.bookexchange.connectors.users;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -22,6 +23,7 @@ import java.util.HashMap;
 public class LoginUserConnector extends AsyncTask<HashMap<String, String>, Void, Boolean> {
     private String username;
     private Context context;
+    private ProgressDialog progressDialog;
 
     public LoginUserConnector(Context _context, String _username) {
         context = _context;
@@ -31,10 +33,19 @@ public class LoginUserConnector extends AsyncTask<HashMap<String, String>, Void,
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("Logging you in...");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setCancelable(false);
+        progressDialog.show();
     }
 
     @Override
     protected void onPostExecute(Boolean retVal) {
+        super.onPostExecute(retVal);
+        progressDialog.dismiss();
+
         Log.d("[LUC]", "Login " + (retVal.booleanValue()?"successful":"failed"));
 
         if(retVal.booleanValue()) {
@@ -47,8 +58,6 @@ public class LoginUserConnector extends AsyncTask<HashMap<String, String>, Void,
         } else {
             Toast.makeText(context, "Login failed. Incorrect username/password.", Toast.LENGTH_LONG).show();
         }
-
-        super.onPostExecute(retVal);
     }
 
     @Override
