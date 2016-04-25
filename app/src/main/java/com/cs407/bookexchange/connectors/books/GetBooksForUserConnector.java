@@ -1,5 +1,6 @@
 package com.cs407.bookexchange.connectors.books;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -20,6 +21,7 @@ public class GetBooksForUserConnector extends AsyncTask<HashMap<String, String>,
     private Context context;
     private ListView sellerBookList;
     private SellerAdapter sellerAdapter;
+    private ProgressDialog progressDialog;
 
     public GetBooksForUserConnector(Context _context, ListView _sellerBookList, SellerAdapter _sellerAdapter) {
         context = _context;
@@ -30,10 +32,19 @@ public class GetBooksForUserConnector extends AsyncTask<HashMap<String, String>,
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("Getting all books you've posted...");
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
     }
 
     @Override
     protected void onPostExecute(ArrayList<Object> objects) {
+        super.onPostExecute(objects);
+        progressDialog.dismiss();
+
         if(objects == null) {
             Log.d("[GBFUC]", "An error occurred when executing the query.");
         }
@@ -44,8 +55,6 @@ public class GetBooksForUserConnector extends AsyncTask<HashMap<String, String>,
         }
         sellerAdapter = new SellerAdapter(context, books);
         sellerBookList.setAdapter(sellerAdapter);
-
-        super.onPostExecute(objects);
     }
 
     @Override

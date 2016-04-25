@@ -1,6 +1,7 @@
 package com.cs407.bookexchange.connectors.users;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -20,6 +21,7 @@ import java.util.HashMap;
 public class CreateUserConnector extends AsyncTask<HashMap<String, String>, Void, String> {
     private String username;
     private Context context;
+    private ProgressDialog progressDialog;
 
     public CreateUserConnector(Context _context, String _username) {
         context = _context;
@@ -29,10 +31,19 @@ public class CreateUserConnector extends AsyncTask<HashMap<String, String>, Void
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("Registering and logging you in...");
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
     }
 
     @Override
     protected void onPostExecute(String retVal) {
+        super.onPostExecute(retVal);
+        progressDialog.dismiss();
+
         Log.d("[CUC]", "Registration " + (retVal != null? "successful" : "failed"));
 
         if(retVal != null) {
@@ -46,8 +57,6 @@ public class CreateUserConnector extends AsyncTask<HashMap<String, String>, Void
         } else {
             Toast.makeText(context, "Username already exists, please enter a different username.", Toast.LENGTH_LONG).show();
         }
-
-        super.onPostExecute(retVal);
     }
 
     @Override
