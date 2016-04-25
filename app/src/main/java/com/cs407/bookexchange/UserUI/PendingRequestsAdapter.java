@@ -16,10 +16,10 @@ import com.cs407.bookexchange.db.Book;
 import java.util.ArrayList;
 
 /**
- * Created by ssunny on 4/17/16.
+ * Created by ssunny on 4/24/16.
  */
-public class SellerAdapter extends ArrayAdapter<Book> {
-    public SellerAdapter(Context context, ArrayList<Book> books) {
+public class PendingRequestsAdapter extends ArrayAdapter<Book> {
+    public PendingRequestsAdapter(Context context, ArrayList<Book> books) {
         super(context, 0, books);
     }
 
@@ -30,30 +30,6 @@ public class SellerAdapter extends ArrayAdapter<Book> {
         if(convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.listelement_book, parent, false);
         }
-
-        convertView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                new AlertDialog.Builder(getContext()).
-                setTitle("Delete Book").
-                setMessage("Do you really want to remove the selected book posting?").
-                setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        DeleteBookConnector deleteBookConnector = new DeleteBookConnector(SellerAdapter.this, position);
-                        deleteBookConnector.execute(getItem(position).get_bookid());
-                    }
-                }).
-                setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //
-                    }
-                }).show();
-
-                return true;
-            }
-        });
 
         TextView title = (TextView)convertView.findViewById(R.id.sellerBookTitle);
         title.setText(book.get_title());

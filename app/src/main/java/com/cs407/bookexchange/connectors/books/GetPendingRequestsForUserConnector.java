@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ListView;
 
+import com.cs407.bookexchange.UserUI.PendingRequestsAdapter;
 import com.cs407.bookexchange.UserUI.SellerAdapter;
 import com.cs407.bookexchange.db.Book;
 import com.cs407.bookexchange.db.Constants;
@@ -14,17 +15,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by ssunny on 4/16/16.
+ * Created by ssunny on 4/23/16.
  */
-public class GetBooksForUserConnector extends AsyncTask<HashMap<String, String>, Void, ArrayList<Object>> {
+public class GetPendingRequestsForUserConnector extends AsyncTask<HashMap<String, String>, Void, ArrayList<Object>> {
     private Context context;
-    private ListView sellerBookList;
-    private SellerAdapter sellerAdapter;
+    private PendingRequestsAdapter adapter;
+    private ListView listView;
 
-    public GetBooksForUserConnector(Context _context, ListView _sellerBookList, SellerAdapter _sellerAdapter) {
+    public GetPendingRequestsForUserConnector(Context _context, PendingRequestsAdapter _adapter, ListView _listView) {
         context = _context;
-        sellerBookList = _sellerBookList;
-        sellerAdapter = _sellerAdapter;
+        adapter = _adapter;
+        listView = _listView;
     }
 
     @Override
@@ -35,15 +36,15 @@ public class GetBooksForUserConnector extends AsyncTask<HashMap<String, String>,
     @Override
     protected void onPostExecute(ArrayList<Object> objects) {
         if(objects == null) {
-            Log.d("[GBFUC]", "An error occurred when executing the query.");
+            Log.d("[GPRFUC]", "An error occurred when executing the query.");
         }
 
         ArrayList<Book> books = new ArrayList<Book>();
         for(Object obj : objects) {
             books.add((Book)obj);
         }
-        sellerAdapter = new SellerAdapter(context, books);
-        sellerBookList.setAdapter(sellerAdapter);
+        adapter = new PendingRequestsAdapter(context, books);
+        listView.setAdapter(adapter);
 
         super.onPostExecute(objects);
     }
@@ -54,8 +55,7 @@ public class GetBooksForUserConnector extends AsyncTask<HashMap<String, String>,
     }
 
     @Override
-    protected ArrayList<Object> doInBackground(HashMap<String, String>... params) {
-        params[0].put(Constants.FLAG_CALLER_SELLER_MANAGER, "true");
-        return Read.executeRead(Constants.CRUDObject.BOOK, params[0]);
+    protected ArrayList<Object> doInBackground(HashMap<String, String>... hashMaps) {
+        return Read.executeRead(Constants.CRUDObject.BOOK, hashMaps[0]);
     }
 }

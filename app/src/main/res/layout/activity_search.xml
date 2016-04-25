@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/numISBN"
-        android:layout_below="@+id/searchButton"
         android:hint="search by ISBN"
         android:layout_gravity="left"
         android:layout_centerVertical="true"
@@ -23,17 +22,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SELL MANAGER"
-        android:id="@+id/managerButton"
+        android:id="@+id/btnSellerManagerSearchActivity"
         android:onClick="gotoManger"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_toEndOf="@+id/btnSearchSearchActivity" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
-        android:id="@+id/button2"
+        android:id="@+id/btnSearchSearchActivity"
         android:layout_below="@+id/numISBN"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PENDING REQUESTS"
+        android:id="@+id/btnPendingRequestsSearchActivity"
+        android:layout_alignTop="@+id/btnSellerManagerSearchActivity"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
