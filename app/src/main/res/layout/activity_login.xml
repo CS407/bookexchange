@@ -14,7 +14,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Login to Book Exchange"
         android:padding="50dp"/>
     <EditText
@@ -36,7 +38,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnLoginLoginActivity"
-        android:layout_marginBottom="163dp"
         android:text="LOGIN"/>
 
 </LinearLayout>

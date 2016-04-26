@@ -1,79 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:scrollbars="vertical"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:orientation="vertical"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".UserUI.NewListingActivity">
-
-        <EditText
+    android:layout_width="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android" />
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Title"
-            android:id="@+id/etTitleNewListingActivity" />
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            tools:context=".UserUI.NewListingActivity">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Authors"
-            android:id="@+id/etAuthorsNewListingActivity" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Title"
+                    android:id="@+id/etTitleNewListingActivity" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Edition"
-            android:inputType="number"
-            android:id="@+id/etEditionNewListingActivity" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Authors"
+                    android:id="@+id/etAuthorsNewListingActivity" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Condition"
-            android:id="@+id/etConditionNewListingActivity" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Edition"
+                    android:inputType="number"
+                    android:id="@+id/etEditionNewListingActivity" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Department"
-            android:id="@+id/etDepartmentNewListingActivity" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Condition"
+                    android:id="@+id/etConditionNewListingActivity" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Course Number"
-            android:inputType="number"
-            android:id="@+id/etClassNewListingActivity" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Department"
+                    android:id="@+id/etDepartmentNewListingActivity" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Comments"
-            android:id="@+id/etCommentsNewListingActivity" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Course Number"
+                    android:inputType="number"
+                    android:id="@+id/etClassNewListingActivity" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:hint="Price"
-            android:id="@+id/etPriceNewListingActivity" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Comments"
+                    android:id="@+id/etCommentsNewListingActivity" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:hint="ISBN"
-            android:layout_height="wrap_content"
-            android:id="@+id/etISBNNewListingActivity" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:hint="Price"
+                    android:id="@+id/etPriceNewListingActivity" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="20dp"
-            android:text="Create"
-            android:id="@+id/btnAddNewListingActivity" />
+                <EditText
+                    android:layout_width="match_parent"
+                    android:hint="ISBN"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etISBNNewListingActivity" />
 
-</LinearLayout>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="20dp"
+                    android:text="Create"
+                    android:id="@+id/btnAddNewListingActivity" />
+
+        </LinearLayout>
+</ScrollView>
