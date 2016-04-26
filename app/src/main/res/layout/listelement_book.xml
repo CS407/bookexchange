@@ -43,6 +43,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="7dp"/>
+    <!--<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sellerBookComments"
+            android:minLines="1"
+            android:maxLines="3"/>
+    <!--</ScrollView>-->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

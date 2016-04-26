@@ -50,6 +50,11 @@ public class PendingRequestsAdapter extends ArrayAdapter<Book> {
         else if(book.get_edition() == 3)
             append = "rd";
         edition.setText(book.get_edition() + append + " edition");
+        TextView comments = (TextView)convertView.findViewById(R.id.sellerBookComments);
+        if(book.get_comments().isEmpty())
+            comments.setVisibility(View.GONE);
+        else
+            comments.setText(book.get_comments());
 
         return convertView;
     }
