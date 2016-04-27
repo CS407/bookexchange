@@ -28,11 +28,138 @@
     </string-array>
 
     <string-array name="Deptnumber">
-        <item> computer sciences</item>
-        <item> english</item>
-        <item> american indian studies</item>
-        <item> linguistic</item>
-
+        <item>ACCOUNTING</item>
+        <item>ACTUARIAL SCIENCE</item>
+        <item>AFRICAN LANGUAGES AND LITERATURE</item>
+        <item>AFRO-AMERICAN STUDIES</item>
+        <item>AGRICULTURAL &amp; APPLIED ECONOMICS</item>
+        <item>AGRICULTURAL BUSINESS MANAGEMENT</item>
+        <item>AGRONOMY</item>
+        <item>ANIMAL SCIENCES</item>
+        <item>ANTHROPOLOGY</item>
+        <item>APPLIED MATHEMATICS, ENGINEERING, AND PHYSICS</item>
+        <item>ART</item>
+        <item>ART EDUCATION</item>
+        <item>ART HISTORY</item>
+        <item>ASIAN STUDIES: EAST ASIAN, SOUTHEAST ASIAN</item>
+        <item>ASTRONOMY - PHYSICS</item>
+        <item>ATHLETIC TRAINING</item>
+        <item>ATMOSPHERIC AND OCEANIC SCIENCES</item>
+        <item>BIOCHEMISTRY - CALS</item>
+        <item>BIOCHEMISTRY</item>
+        <item>BIOLOGICAL SYSTEMS ENGINEERING</item>
+        <item>BIOMEDICAL ENGINEERING</item>
+        <item>BIOLOGY - CALS</item>
+        <item>BIOLOGY</item>
+        <item>BOTANY</item>
+        <item>CARTOGRAPHY AND GEOGRAPHIC INFORMATION SYSTEMS</item>
+        <item>CHEMICAL ENGINEERING</item>
+        <item>CHEMISTRY</item>
+        <item>CHINESE</item>
+        <item>CIVIL ENGINEERING</item>
+        <item>CLASSICAL HUMANITIES</item>
+        <item>CLASSICS</item>
+        <item>COMMUNICATION ARTS</item>
+        <item>COMMUNICATION SCIENCES AND DISORDERS</item>
+        <item>COMMUNITY AND ENVIRONMENTAL SOCIOLOGY</item>
+        <item>COMMUNITY &amp; NONPROFIT LEADERSHIP</item>
+        <item>COMPARATIVE LITERATURE</item>
+        <item>COMPUTER ENGINEERING</item>
+        <item>COMPUTER SCIENCES</item>
+        <item>CONSERVATION BIOLOGY</item>
+        <item>DANCE</item>
+        <item>DAIRY SCIENCE</item>
+        <item>DIETETICS</item>
+        <item>ECONOMICS</item>
+        <item>EDUCATION INDIVIDUAL MAJOR</item>
+        <item>ELECTRICAL ENGINEERING</item>
+        <item>ELEMENTARY EDUCATION</item>
+        <item>ENGINEERING MECHANICS</item>
+        <item>ENGINEERING PHYSICS</item>
+        <item>ENGLISH</item>
+        <item>ENTOMOLOGY</item>
+        <item>ENVIRONMENTAL SCIENCES</item>
+        <item>ENVIRONMENTAL STUDIES</item>
+        <item>FINANCE, INVESTMENT AND BANKING</item>
+        <item>FOOD SCIENCE</item>
+        <item>FOREST SCIENCE</item>
+        <item>FRENCH</item>
+        <item>GENDER AND WOMEN\'S STUDIES</item>
+        <item>GENETICS</item>
+        <item>GEOGRAPHY</item>
+        <item>GEOLOGICAL ENGINEERING</item>
+        <item>GEOLOGY AND GEOPHYSICS</item>
+        <item>GERMAN</item>
+        <item>HISTORY</item>
+        <item>HISTORY AND HISTORY OF SCIENCE, MEDICINE, AND TECHNOLOGY</item>
+        <item>HISTORY OF SCIENCE–ZOOLOGY</item>
+        <item>HISTORY OF SCIENCE, MEDICINE, AND TECHNOLOGY</item>
+        <item>HORTICULTURE</item>
+        <item>HUMAN DEVELOPMENT &amp; FAMILY STUDIES</item>
+        <item>HUMAN ECOLOGY</item>
+        <item>INDUSTRIAL ENGINEERING</item>
+        <item>INFORMATION SYSTEMS</item>
+        <item>INTERIOR ARCHITECTURE</item>
+        <item>INTERNATIONAL BUSINESS</item>
+        <item>INTERNATIONAL STUDIES</item>
+        <item>ITALIAN</item>
+        <item>JAPANESE</item>
+        <item>JEWISH STUDIES</item>
+        <item>JOURNALISM</item>
+        <item>KINESIOLOGY</item>
+        <item>LANDSCAPE ARCHITECTURE</item>
+        <item>LANGUAGES AND CULTURES OF ASIA</item>
+        <item>LATIN</item>
+        <item>LATIN AMERICAN, CARIBBEAN, AND IBERIAN STUDIES</item>
+        <item>LEGAL STUDIES</item>
+        <item>LETTERS &amp; SCIENCE INDIVIDUAL MAJOR</item>
+        <item>LIFE SCIENCES COMMUNICATION</item>
+        <item>LINGUISTICS</item>
+        <item>MANAGEMENT AND HUMAN RESOURCES</item>
+        <item>MARKETING</item>
+        <item>MATERIALS SCIENCE AND ENGINEERING</item>
+        <item>MATHEMATICS</item>
+        <item>MECHANICAL ENGINEERING</item>
+        <item>MICROBIOLOGY - CALS</item>
+        <item>MICROBIOLOGY</item>
+        <item>MOLECULAR BIOLOGY</item>
+        <item>MUSIC</item>
+        <item>NAVAL SCIENCE</item>
+        <item>NUCLEAR ENGINEERING</item>
+        <item>NURSING</item>
+        <item>NUTRITIONAL SCIENCES</item>
+        <item>OPERATIONS AND TECHNOLOGY MANAGEMENT</item>
+        <item>PERSONAL FINANCE</item>
+        <item>PHARMACOLOGY &amp; TOXICOLOGY</item>
+        <item>PHILOSOPHY</item>
+        <item>PHYSICAL EDUCATION</item>
+        <item>PHYSICS</item>
+        <item>PLANT PATHOLOGY</item>
+        <item>POLISH</item>
+        <item>POLITICAL SCIENCE</item>
+        <item>PORTUGUESE</item>
+        <item>POULTRY SCIENCE</item>
+        <item>PSYCHOLOGY</item>
+        <item>REAL ESTATE</item>
+        <item>REHABILITATION PSYCHOLOGY</item>
+        <item>RELIGIOUS STUDIES</item>
+        <item>RETAILING AND CONSUMER BEHAVIOR</item>
+        <item>RISK MANAGEMENT AND INSURANCE</item>
+        <item>RUSSIAN</item>
+        <item>SCANDINAVIAN STUDIES</item>
+        <item>SECONDARY EDUCATION</item>
+        <item>SOCIAL WELFARE</item>
+        <item>SOCIAL WORK</item>
+        <item>SOCIOLOGY</item>
+        <item>SOIL SCIENCE</item>
+        <item>SPANISH</item>
+        <item>SPECIAL EDUCATION</item>
+        <item>STATISTICS</item>
+        <item>TEXTILES &amp; FASHION DESIGN</item>
+        <item>THEATRE AND DRAMA</item>
+        <item>WILDLIFE ECOLOGY</item>
+        <item>WORLD LANGUAGES EDUCATION</item>
+        <item>ZOOLOGY</item>
     </string-array>
 
     <string name="username">username</string>
