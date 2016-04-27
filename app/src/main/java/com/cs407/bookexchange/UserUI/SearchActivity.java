@@ -32,7 +32,7 @@ public class SearchActivity extends AppCompatActivity {
 
         search_ISBN = ISBNText.getText().toString();
         search_title = searchTitle.getText().toString();
-        // fix search_dept= staticSpinner.getSelectedItem().toString();
+        search_dept= staticSpinner.getSelectedItem().toString();
 
 
         Button managerButton =(Button)findViewById(R.id.managerButton);
