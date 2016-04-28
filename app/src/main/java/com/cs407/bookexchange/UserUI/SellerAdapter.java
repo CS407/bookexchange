@@ -35,8 +35,9 @@ public class SellerAdapter extends ArrayAdapter<Book> {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReadBuyersConnector readBuyersConnector = new ReadBuyersConnector();
-                readBuyersConnector.execute(getItem(position).get_bookid());
+                BuyersDialog buyersDialog = new BuyersDialog(getContext(),getItem(position).get_bookid());
+                buyersDialog.setTitle("Interested Buyers");
+                buyersDialog.show();
             }
         });
 
