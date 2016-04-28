@@ -99,11 +99,20 @@ public class Read {
                         }
                         break;
                         case Constants.RESPONSE_KEY_BOOK: {
-                            JSONArray array = respJson.getJSONArray(Constants.RESPONSE_KEY_BOOK);
+                            JSONArray array = respJson.getJSONArray(objKey);
 
                             for(int idx = 0; idx < array.length(); idx++) {
                                 JSONObject obj = array.getJSONObject(idx);
                                 data.add(Book.JsonToObj(obj));
+                            }
+                        }
+                        break;
+                        case Constants.RESPONSE_KEY_BUYER: {
+                            JSONArray array = respJson.getJSONArray(objKey);
+
+                            for(int idx = 0; idx < array.length(); idx++) {
+                                JSONObject obj = array.getJSONObject(idx);
+                                data.add(User.JsonToObj(obj));
                             }
                         }
                         break;
@@ -146,8 +155,6 @@ public class Read {
     }
 
     private static ArrayList<Object> getBuyerSet(HashMap<String, String> params) {
-        ArrayList<Object> buyerSet = null;
-
-        return buyerSet;
+        return doRead(params, Constants.urlReadBuyer, Constants.RESPONSE_KEY_BUYER);
     }
 }
