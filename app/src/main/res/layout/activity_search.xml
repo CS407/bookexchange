@@ -18,29 +18,63 @@
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SELL MANAGER"
-        android:id="@+id/btnSellerManagerSearchActivity"
+        android:id="@+id/managerButton"
         android:onClick="gotoManger"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/btnSearchSearchActivity" />
+        android:layout_toStartOf="@+id/searchButton" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
-        android:id="@+id/btnSearchSearchActivity"
+        android:id="@+id/searchButton"
         android:layout_below="@+id/numISBN"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchTitle"
+        android:hint="search by Title"
+        android:layout_gravity="left"
+        android:layout_above="@+id/numISBN"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/deptSpinner"
+        android:layout_above="@+id/searchTitle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:entries="@array/Deptnumber"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="search by Department"
+        android:id="@+id/searchByDept"
+        android:layout_alignRight="@+id/deptSpinner"
+        android:layout_alignEnd="@+id/deptSpinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/deptSpinner" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="PENDING REQUESTS"
         android:id="@+id/btnPendingRequestsSearchActivity"
-        android:layout_alignTop="@+id/btnSellerManagerSearchActivity"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/numISBN" />
 
 </RelativeLayout>

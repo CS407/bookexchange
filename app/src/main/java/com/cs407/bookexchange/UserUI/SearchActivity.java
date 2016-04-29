@@ -1,5 +1,6 @@
 package com.cs407.bookexchange.UserUI;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,7 @@ import com.cs407.bookexchange.db.TableDefs;
 
 import java.util.HashMap;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends Activity {
     String search_title;
     String search_dept;
     String search_ISBN;
@@ -28,7 +29,7 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        sellerManagerBtn = (Button)findViewById(R.id.btnSellerManagerSearchActivity);
+        sellerManagerBtn = (Button)findViewById(R.id.managerButton);
         sellerManagerBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent in = new Intent(SearchActivity.this, SellerManagerActivity.class);
