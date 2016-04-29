@@ -8,34 +8,29 @@ public class Constants {
         BOOK,
         USER,
         BUYER,
-        SELLER
     };
 
-    public static String urlReadBook = "http://pages.cs.wisc.edu/~dudenas/search_results_text.php"; //KAD TODO change to the not-hardcoded one
+    public static String urlReadBooksForUser = "http://pages.cs.wisc.edu/~ssunny/webserver/get_books_for_user.php";
+    public static String urlReadBooksForSearch = "";
+    public static String urlReadRequestsForUser = "http://pages.cs.wisc.edu/~ssunny/webserver/get_requests_for_user.php";
     public static String urlReadUser = "http://pages.cs.wisc.edu/~ssunny/webserver/attempt_login.php";
     public static String urlReadBuyer = "";
-    public static String urlReadSeller = "";
 
-    public static String urlCreateBook = "";
+    public static String urlCreateBook = "http://pages.cs.wisc.edu/~ssunny/webserver/create_book.php";
     public static String urlCreateUser = "http://pages.cs.wisc.edu/~ssunny/webserver/create_user.php";
     public static String urlCreateBuyer = "";
-    public static String urlCreateSeller = "";
 
     public static String urlUpdateBook = "";
     public static String urlUpdateUser = "";
     public static String urlUpdateBuyer = "";
-    public static String urlUpdateSeller = "";
 
     public static String urlDeleteBook = "";
     public static String urlDeleteUser = "";
     public static String urlDeleteBuyer = "";
-    public static String urlDeleteSeller = "";
 
-    public static String RESPONSE_KEY_SUCCESS = "success";
-    public static String RESPONSE_KEY_USER = "user";
-    public static String RESPONSE_KEY_BOOKS = "books";
+    public static final String RESPONSE_KEY_SUCCESS = "success";
+    public static final String RESPONSE_KEY_USER = "user";
+    public static final String RESPONSE_KEY_BOOK = "books";
+    public static final String FLAG_CALLER_SELLER_MANAGER = "caller_seller_manager";
 
-
-    public static String BOOK_SEARCH_STATUS = "foundBooks";
-    public static String BOOKS_RESULTS_KEY = "bookResults";
 }
