@@ -30,6 +30,8 @@
         <activity android:name=".UserUI.PendingRequestsActivity" />
         <activity android:name=".UserUI.SearchActivity" />
         <activity android:name=".UserUI.NewListingActivity" android:windowSoftInputMode="adjustPan" ></activity>
+        <activity android:name=".UserUI.ResultsActivity" />
+        <activity android:name=".UserUI.SlidingMenuActivity" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

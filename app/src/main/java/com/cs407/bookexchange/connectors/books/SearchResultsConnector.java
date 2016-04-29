@@ -44,8 +44,6 @@ public class SearchResultsConnector extends AsyncTask<HashMap<String, String>, V
             resultsIntent.putExtra(Constants.BOOK_SEARCH_STATUS, foundBooks);
             resultsIntent.putParcelableArrayListExtra(Constants.BOOKS_RESULTS_KEY, bookResults);
             context.startActivity(resultsIntent);
-
-            ((Activity)context).finish();
 //        } else {
 //            //probably just have a message inside ResultsActivity if nothing returned??
 //            Toast.makeText(context, "Search failed.", Toast.LENGTH_LONG).show();
@@ -63,9 +61,8 @@ public class SearchResultsConnector extends AsyncTask<HashMap<String, String>, V
     protected Boolean doInBackground(HashMap<String, String>... params) {
         ArrayList<Object> books = Read.executeRead(Constants.CRUDObject.BOOK, params[0]);
 
-        Log.w("[SRC] books looks like:", books.toString());
-
         if (books != null) {
+            Log.w("[SRC] books looks like:", books.toString());
             foundBooks = true;
             for(int i = 0; i<books.size(); i++){
                 bookResults.add((Book)books.get(i));
