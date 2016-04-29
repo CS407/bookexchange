@@ -223,12 +223,12 @@ public class Book implements Parcelable{
             book.set_dept(json.getString(TableDefs.Books.COLUMN_DEPARTMENT));
             book.set_courseno(json.getString(TableDefs.Books.COLUMN_COURSENO));
             book.set_edition(json.getInt(TableDefs.Books.COLUMN_EDITION));
-            book.set_condition(json.getString(TableDefs.Books.COLUMN_CONDITION).equalsIgnoreCase("new")?Condition.NEW:Condition.USED);
+            book.set_condition(json.getString(TableDefs.Books.COLUMN_CONDITION).equalsIgnoreCase("new") ? Condition.NEW : Condition.USED);
             book.set_price(json.getDouble(TableDefs.Books.COLUMN_PRICE));
         } catch (JSONException jsoe) {
             Log.d("[BOOK]", jsoe.getMessage());
         }
-
+        Log.d("[BOOKKAD]", "just made: " + book.toString());
         return book;
     }
 }

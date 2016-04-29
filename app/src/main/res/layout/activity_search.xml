@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/drawer_layout"
-    android:orientation="vertical">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -23,23 +18,30 @@
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SELL MANAGER"
-        android:id="@+id/managerButton"
+        android:id="@+id/btnSellerManagerSearchActivity"
         android:onClick="gotoManger"
         android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@+id/searchButton" />
+        android:layout_toEndOf="@+id/btnSearchSearchActivity" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
-        android:id="@+id/searchButton"
+        android:id="@+id/btnSearchSearchActivity"
         android:layout_below="@+id/numISBN"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PENDING REQUESTS"
+        android:id="@+id/btnPendingRequestsSearchActivity"
+        android:layout_alignTop="@+id/btnSellerManagerSearchActivity"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="match_parent"
@@ -74,20 +76,5 @@
         android:layout_alignParentStart="true"
         android:layout_above="@+id/deptSpinner" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PENDING REQUESTS"
-        android:id="@+id/btnPendingRequestsSearchActivity"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/numISBN" />
 
 </RelativeLayout>
-<ListView
-android:layout_width="200dp"
-android:layout_height="match_parent"
-android:id="@+id/lv_sliding_menu"
-android:background="#FFFFFF"
-android:choiceMode="singleChoice"
-android:layout_gravity="start"></ListView>
-    </android.support.v4.widget.DrawerLayout>

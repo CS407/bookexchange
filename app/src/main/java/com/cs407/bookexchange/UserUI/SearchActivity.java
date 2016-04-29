@@ -49,7 +49,7 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        sellerManagerBtn = (Button)findViewById(R.id.managerButton);
+        sellerManagerBtn = (Button)findViewById(R.id.btnSellerManagerSearchActivity);
         sellerManagerBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent in = new Intent(SearchActivity.this, SellerManagerActivity.class);
@@ -77,8 +77,8 @@ public class SearchActivity extends AppCompatActivity {
         search_title = searchTitle.getText().toString();
         search_dept= staticSpinner.getSelectedItem().toString();
 
-        Button searchButton =(Button)findViewById(R.id.searchButton);
-        searchButton.setOnClickListener(new View.OnClickListener() {
+        searchBtn =(Button)findViewById(R.id.btnSearchSearchActivity);
+        searchBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 HashMap<String, String> params = new HashMap<String, String>();
 
