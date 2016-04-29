@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.cs407.bookexchange.R;
 import com.cs407.bookexchange.connectors.books.DeleteBookConnector;
+import com.cs407.bookexchange.connectors.buyers.ReadBuyersConnector;
 import com.cs407.bookexchange.db.Book;
 
 import java.util.ArrayList;
@@ -30,6 +31,15 @@ public class SellerAdapter extends ArrayAdapter<Book> {
         if(convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.listelement_book, parent, false);
         }
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BuyersDialog buyersDialog = new BuyersDialog(getContext(),getItem(position).get_bookid());
+                buyersDialog.setTitle("Interested Buyers");
+                buyersDialog.show();
+            }
+        });
 
         convertView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
