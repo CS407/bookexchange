@@ -78,7 +78,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
     }
 
     private String getEdStr(Book book){
-        String edStr = book.get_edition();
+        String edStr = String.valueOf(book.get_edition());
         char edNum = edStr.charAt(edStr.length() - 1);
         String suffix;
         switch (edNum){
