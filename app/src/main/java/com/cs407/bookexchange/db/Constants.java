@@ -4,6 +4,8 @@ package com.cs407.bookexchange.db;
  * Created by ssunny7 on 2/29/2016.
  */
 public class Constants {
+
+
     public enum CRUDObject {
         BOOK,
         USER,
@@ -32,5 +34,8 @@ public class Constants {
     public static final String RESPONSE_KEY_USER = "user";
     public static final String RESPONSE_KEY_BOOK = "books";
     public static final String FLAG_CALLER_SELLER_MANAGER = "caller_seller_manager";
+
+    public static final String BOOK_SEARCH_STATUS = "book_search_status";
+    public static final String BOOKS_RESULTS_KEY= "book_search_results";
 
 }

@@ -26,7 +26,7 @@ public class Book implements Parcelable{
         _comments = in.readString();
         _dept = in.readString();
         _courseno = in.readString();
-        _edition = in.readString();
+        _edition = in.readInt();
         try{
             _condition = Condition.valueOf(in.readString());
         }catch(IllegalArgumentException ex){
@@ -62,7 +62,7 @@ public class Book implements Parcelable{
         dest.writeString(_comments);
         dest.writeString(_dept);
         dest.writeString(_courseno);
-        dest.writeString(_edition);
+        dest.writeInt(_edition);
         dest.writeString((_condition == null) ? "USED" : _condition.name());
         //dest.writeParcelable(_condition, 0);
 //        _condition.writeToParcel(dest, 0);
