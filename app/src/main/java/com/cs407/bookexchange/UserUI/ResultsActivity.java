@@ -1,44 +1,41 @@
 package com.cs407.bookexchange.UserUI;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.cs407.bookexchange.R;
 import com.cs407.bookexchange.adapter.SlidingMenuAdapter;
+import com.cs407.bookexchange.db.Book;
+import com.cs407.bookexchange.db.Constants;
 import com.cs407.bookexchange.fragment.Fragment1;
 import com.cs407.bookexchange.model.ItemSlideMenu;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewListingActivity extends AppCompatActivity {
-    private String bookTitle;
-    private String author;
-    private String edition;
-    private String year;
-    private String condition;
-    private String dept;
-    private int classNum;
-    private String comments;
-    private Double price;
-    private long ISBN;
-    private Button btncreate;
+public class ResultsActivity extends AppCompatActivity {
 
+    ListView resultsView;
+    ArrayList<Book> books;
+    ArrayList<Book> resultBooks;
 
     private List<ItemSlideMenu> listSliding;
     private SlidingMenuAdapter adapter;
@@ -46,56 +43,30 @@ public class NewListingActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_listing);
-        btncreate =(Button)findViewById(R.id.BTNcreatenewbook);
-        btncreate.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent in = new Intent(getApplicationContext(), SellerManagerActivity.class);
-                startActivity(in);
-                EditText editTitle = (EditText)findViewById(R.id.edittitle);
-                EditText editauthor = (EditText)findViewById(R.id.editauthor);
-                EditText editedition = (EditText)findViewById(R.id.editEdition);
-                EditText edityear = (EditText)findViewById(R.id.edityear);
-                EditText editcondition = (EditText)findViewById(R.id.editcondition);
-                Spinner staticSpinner = (Spinner)findViewById(R.id.editdept);
-                EditText editclassnum = (EditText)findViewById(R.id.editclassnum);
-                EditText editcomment = (EditText)findViewById(R.id.editcomment);
-                EditText editprice = (EditText)findViewById(R.id.editprice);
-                EditText editisbn = (EditText)findViewById(R.id.editISBN);
-                if("".equals(editTitle.getText().toString())||
-                "".equals(editauthor.getText().toString())||
-                        "".equals(staticSpinner.getSelectedItem().toString())||
-                "".equals(editedition.getText().toString())||
-                "".equals(edityear.getText().toString())||
-                "".equals(editcondition.getText().toString())||
+        setContentView(R.layout.activity_results);
+        resultsView = (ListView)findViewById(R.id.searchResultsList);
+        //books = new ArrayList<Book>(); //add books to test display
 
-                        "".equals(editprice.getText().toString())||
-                        "".equals(editisbn.getText().toString())
-                ){
-                    Toast.makeText(getBaseContext(), "some fields are empty, please make sure to enter all necessary information",
-                            Toast.LENGTH_SHORT).show();
-                }else{
-                    bookTitle = editTitle.getText().toString();
-                    author=editauthor.getText().toString();
-                    edition= editedition.getText().toString();
-                    year=edityear.getText().toString();//int
-                    condition= editcondition.getText().toString();
-                    dept=staticSpinner.getSelectedItem().toString();
-                    classNum = Integer.parseInt(editclassnum.getText().toString());//int
-                    comments = editcomment.getText().toString();
-                    price = Double.parseDouble(editprice.getText().toString());//double
-                    ISBN = Long.valueOf(editisbn.getText().toString());//long
+        Intent searchIntent = getIntent();
+        boolean foundBooks = searchIntent.getBooleanExtra(Constants.BOOK_SEARCH_STATUS, false);
+        if(foundBooks){
+            resultBooks = searchIntent.getParcelableArrayListExtra(Constants.BOOKS_RESULTS_KEY);
+            Log.w("{RESACT}", resultBooks.toString());
 
-                }
+           // ArrayAdapter<Book> listAdapter = new ArrayAdapter<Book>(this, android.R.layout.simple_list_item_1, resultBooks);
+            BookAdapter listAdapter = new BookAdapter(this, R.layout.results_list_item, resultBooks);
+            resultsView.setAdapter(listAdapter);
 
 
-            }
-        });
 
+
+        }
+        else{
+            //TODO
+        }
 
 
 
@@ -155,36 +126,7 @@ public class NewListingActivity extends AppCompatActivity {
         };
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
     }
-    public String getBookTitle(){
-        return bookTitle;
-    }
-    public String getAuthor(){
-        return author;
-    }
-    public String getEdition(){
-        return edition;
-    }
-    public String getYear(){
-        return year;
-    }
-    public String getCondition(){
-        return condition;
-    }
-    public String getDept(){
-        return dept;
-    }
-    public int getClassnum(){
-        return classNum;
-    }
-    public String getComments(){
-        return comments;
-    }
-    public Double getPrice(){
-        return price;
-    }
-    public long getISBN(){
-        return ISBN;
-    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
@@ -239,5 +181,3 @@ public class NewListingActivity extends AppCompatActivity {
         }
     }
 }
-
-

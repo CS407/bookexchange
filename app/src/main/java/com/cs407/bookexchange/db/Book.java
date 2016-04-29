@@ -5,14 +5,84 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Created by ssunny7 on 2/29/2016.
  */
-public class Book {
+public class Book implements Parcelable{
 
-    public enum Condition {
-        NEW,
-        USED
+    protected Book(Parcel in) {
+        _bookid = in.readString();
+        _title = in.readString();
+        _authors = in.readString();
+        _isbn = in.readString();
+        _price = in.readDouble();
+        _comments = in.readString();
+        _dept = in.readString();
+        _courseno = in.readString();
+        _edition = in.readString();
+        try{
+            _condition = Condition.valueOf(in.readString());
+        }catch(IllegalArgumentException ex){
+            //default
+            _condition = Condition.USED;
+        }
+    }
+
+    public static final Creator<Book> CREATOR = new Creator<Book>() {
+        @Override
+        public Book createFromParcel(Parcel in) {
+            return new Book(in);
+        }
+
+        @Override
+        public Book[] newArray(int size) {
+            return new Book[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(_bookid);
+        dest.writeString(_title);
+        dest.writeString(_authors);
+        dest.writeString(_isbn);
+        dest.writeDouble(_price);
+        dest.writeString(_comments);
+        dest.writeString(_dept);
+        dest.writeString(_courseno);
+        dest.writeString(_edition);
+        dest.writeString((_condition == null) ? "USED" : _condition.name());
+        //dest.writeParcelable(_condition, 0);
+//        _condition.writeToParcel(dest, 0);
+    }
+
+    public enum Condition //implements Parcelable {
+    {NEW, USED;
+
+        public String toString(){
+            String condStr = this.name();
+            return condStr.charAt(0) + condStr.substring(1).toLowerCase();
+        }
+
+//        @Override
+//        public int describeContents() {             return 0;             }
+//
+//        @Override
+//        public void writeToParcel(Parcel dest, int flags) {
+//            dest.writeString(this.name());
+//        }
     };
 
     private String _bookid;

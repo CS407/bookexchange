@@ -32,6 +32,8 @@ public class Read {
                       break;
             case BUYER:readSet = getBuyerSet(params);
                         break;
+            case SELLER:readSet = getSellerSet(params);
+                        break;
         }
 
         return readSet;
@@ -58,8 +60,76 @@ public class Read {
         }
     }
 
+    private static ArrayList<Object> getBookSet(HashMap<String, String> params) {
+
+        ArrayList<Object> bookSet = null;
+        String targetUrl = Constants.urlReadBook;
     private static ArrayList<Object> doRead(HashMap<String, String> params, String targetUrl, String objKey) {
         ArrayList<Object> data = null;
+
+        try {
+            //Contact the URL to read books with the given params
+            URL userGetUrl = new URL(targetUrl);
+            HttpURLConnection urlConnection = (HttpURLConnection)userGetUrl.openConnection();
+
+            byte[] postData = getPostBytes(params);
+
+            urlConnection.setDoOutput(true);
+            urlConnection.setDoInput(true);
+            urlConnection.setRequestMethod("POST");
+            urlConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            urlConnection.setRequestProperty("Content-Length", String.valueOf(postData.length));
+            OutputStream connWriter = urlConnection.getOutputStream();
+            connWriter.write(postData);
+            connWriter.flush();
+            connWriter.close();
+
+            if(urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                //Read response
+                BufferedReader connReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+
+                //connReader.readLine();
+                // //connReader.readLine();
+                String response = connReader.readLine();
+               // Log.w("KAD book[DB] response ", response);
+                JSONObject respJson = new JSONObject(response);
+                Log.w("KAD book[DB] respJSON ", respJson.toString());
+                String success = respJson.getString(Constants.RESPONSE_KEY_SUCCESS);
+                if (success.equalsIgnoreCase("1")) {
+                    bookSet = new ArrayList<Object>();
+
+                    //Get array of JSON books
+                    JSONArray bookArr = respJson.getJSONArray(Constants.RESPONSE_KEY_BOOKS);
+
+                    Log.w("KAD book[DB] bookArr ", bookArr.toString());
+
+                    //Get actual Book objects
+                    for(int i = 0; i<bookArr.length(); i++){
+                        JSONObject currBook = bookArr.getJSONObject(i);
+                        Log.w("KAD book[DB] currBook ", currBook.toString());
+                        Book book = Book.JsonToObj(currBook);
+                        bookSet.add(book);
+                    }
+                }
+                connReader.close();
+            }
+
+            urlConnection.disconnect();
+        } catch (MalformedURLException mulre) {
+            Log.w("book[DB] Malformed URL ", mulre.getMessage());
+        } catch (IOException ioe) {
+            Log.w("book[DB] IO ", ioe.getMessage());
+        } catch (JSONException jsoe) {
+            Log.w("book[DB] JSON ", jsoe.getMessage());
+        }
+
+        Log.w("book[DB] bookSet: ", bookSet.toString());
+        return bookSet;
+    }
+
+    private static ArrayList<Object> getUserSet(HashMap<String, String> params) {
+        String targetUrl = Constants.urlReadUser;
+        ArrayList<Object> users = null;
 
         try {
             URL url = new URL(targetUrl);
