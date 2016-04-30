@@ -24,6 +24,7 @@ import com.cs407.bookexchange.connectors.books.SearchResultsConnector;
 import com.cs407.bookexchange.db.TableDefs;
 import com.cs407.bookexchange.fragment.Fragment1;
 import com.cs407.bookexchange.model.ItemSlideMenu;
+import com.cs407.bookexchange.userprefs.UserPrefs;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -175,7 +176,7 @@ public class SearchActivity extends AppCompatActivity {
         Intent in;
         switch(pos){
             case 0:
-                in = new Intent(getApplicationContext(), SearchActivity.class);
+                in = new Intent(getApplicationContext(), PendingRequestsActivity.class);
                 startActivity(in);
                 break;
             case 1:
@@ -186,7 +187,10 @@ public class SearchActivity extends AppCompatActivity {
                 fragment=new Fragment1();
                 break;
             case 3:
-                fragment=new Fragment1();
+                UserPrefs.doLogout();
+                finish();
+                in = new Intent(getApplicationContext(), StartActivity.class);
+                startActivity(in);
                 break;
             default:
                 fragment=new Fragment1();

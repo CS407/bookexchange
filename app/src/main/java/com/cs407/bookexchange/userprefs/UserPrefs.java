@@ -24,4 +24,15 @@ public class UserPrefs {
         editor.putString(name, value);
         editor.commit();
     }
+
+    public static void deletePreference(String name) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.remove(name);
+        editor.commit();
+    }
+
+    public static void doLogout() {
+        deletePreference(Constants.PREF_CUR_USER_USERNAME);
+        deletePreference(Constants.PREF_CUR_USER_ID);
+    }
 }
