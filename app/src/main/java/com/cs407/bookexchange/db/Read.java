@@ -80,8 +80,10 @@ public class Read {
             if(urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 BufferedReader connReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 
-             //   connReader.readLine(); //TODO why is this here? - with my script this is unnecessary. How are our scripts different? -KAD
                 if (objKey == Constants.RESPONSE_KEY_USER) {
+                    connReader.readLine();
+                    connReader.readLine();
+                } else if(targetUrl == Constants.urlReadBooksForUser || targetUrl == Constants.urlReadRequestsForUser) {
                     connReader.readLine();
                 }
                 String response = connReader.readLine();

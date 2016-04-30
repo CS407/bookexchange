@@ -91,7 +91,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        listViewSliding=(ListView)findViewById(R.id.lv_sliding_menu);
+        /*listViewSliding=(ListView)findViewById(R.id.lv_sliding_menu);
         drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
 
         listSliding=new ArrayList<>();
@@ -145,10 +145,10 @@ public class SearchActivity extends AppCompatActivity {
                 invalidateOptionsMenu();
             }
         };
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);*/
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
         return true;
@@ -200,6 +200,6 @@ public class SearchActivity extends AppCompatActivity {
             transaction.addToBackStack(null);
             transaction.commit();
         }
-    }
+    }*/
 }
 

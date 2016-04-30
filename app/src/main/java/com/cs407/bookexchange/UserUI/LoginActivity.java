@@ -44,8 +44,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 LoginUserConnector loginConnector = new LoginUserConnector(LoginActivity.this, username);
                 loginConnector.execute(params);
-                Intent searchIntent = new Intent(getApplicationContext(), SearchActivity.class);
-                startActivity(searchIntent);
             }
         });
     }
