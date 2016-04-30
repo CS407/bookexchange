@@ -160,6 +160,11 @@
         <item>ZOOLOGY</item>
     </string-array>
 
+    <string-array name="condition">
+        <item>NEW</item>
+        <item>USED</item>
+    </string-array>
+
     <string name="username">username</string>
     <string name="password">password</string>
     <string name="loginButton1">loginButton1</string>
