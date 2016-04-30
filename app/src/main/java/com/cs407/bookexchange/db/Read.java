@@ -80,7 +80,7 @@ public class Read {
             if(urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 BufferedReader connReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 
-                if (objKey == Constants.RESPONSE_KEY_USER) {
+                if (objKey == Constants.RESPONSE_KEY_USER || targetUrl == Constants.urlReadBooksForSearch) {
                     connReader.readLine();
                     connReader.readLine();
                 } else if(targetUrl == Constants.urlReadBooksForUser || targetUrl == Constants.urlReadRequestsForUser) {
