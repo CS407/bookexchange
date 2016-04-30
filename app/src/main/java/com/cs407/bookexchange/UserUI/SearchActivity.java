@@ -91,14 +91,14 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        /*listViewSliding=(ListView)findViewById(R.id.lv_sliding_menu);
+        listViewSliding=(ListView)findViewById(R.id.lv_sliding_menu);
         drawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
 
         listSliding=new ArrayList<>();
 
 
-        listSliding.add(new ItemSlideMenu(R.mipmap.ic_launcher,"Buy"));
-        listSliding.add(new ItemSlideMenu(R.mipmap.ic_launcher,"Sell"));
+        listSliding.add(new ItemSlideMenu(R.mipmap.ic_launcher,"Pending Requests"));
+        listSliding.add(new ItemSlideMenu(R.mipmap.ic_launcher,"Posted Books"));
         listSliding.add(new ItemSlideMenu(R.mipmap.ic_launcher,"Contacts"));
         listSliding.add(new ItemSlideMenu(R.mipmap.ic_launcher,"Logout"));
 
@@ -107,7 +107,7 @@ public class SearchActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //set title
-        setTitle(listSliding.get(0).getTitle());
+        setTitle("Search");
         //item selected
         listViewSliding.setItemChecked(0, true);
         //close menu
@@ -145,10 +145,10 @@ public class SearchActivity extends AppCompatActivity {
                 invalidateOptionsMenu();
             }
         };
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);*/
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
     }
 
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu,menu);
         return true;
@@ -200,6 +200,6 @@ public class SearchActivity extends AppCompatActivity {
             transaction.addToBackStack(null);
             transaction.commit();
         }
-    }*/
+    }
 }
 
