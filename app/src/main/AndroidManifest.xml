@@ -24,13 +24,13 @@
             </intent-filter>
             />
         </activity>
-        <activity android:name=".UserUI.LoginActivity" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".UserUI.RegisterActivity" android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".UserUI.SellerManagerActivity" android:theme="@style/Theme.AppCompat" />
-        <activity android:name=".UserUI.PendingRequestsActivity" />
-        <activity android:name=".UserUI.SearchActivity" />
-        <activity android:name=".UserUI.NewListingActivity" android:windowSoftInputMode="adjustPan" ></activity>
-        <activity android:name=".UserUI.ResultsActivity" />
+        <activity android:name=".UserUI.LoginActivity" android:windowSoftInputMode="adjustPan" android:label="Login" />
+        <activity android:name=".UserUI.RegisterActivity" android:windowSoftInputMode="adjustPan" android:label="Register" />
+        <activity android:name=".UserUI.SellerManagerActivity" android:theme="@style/Theme.AppCompat" android:label="Posted Books" />
+        <activity android:name=".UserUI.PendingRequestsActivity" android:label="Pending Requests" />
+        <activity android:name=".UserUI.SearchActivity" android:label="Search" />
+        <activity android:name=".UserUI.NewListingActivity" android:windowSoftInputMode="adjustPan" android:label="Add New Listing" ></activity>
+        <activity android:name=".UserUI.ResultsActivity" android:label="Search Results" />
         <activity android:name=".UserUI.SlidingMenuActivity" />
     </application>
 

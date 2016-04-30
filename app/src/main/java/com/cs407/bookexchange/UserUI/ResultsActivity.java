@@ -100,7 +100,6 @@ public class ResultsActivity extends AppCompatActivity {
         listViewSliding.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                setTitle(listSliding.get(position).getTitle());
                 listViewSliding.setItemChecked(position, true);
 
                 //replace fragment
