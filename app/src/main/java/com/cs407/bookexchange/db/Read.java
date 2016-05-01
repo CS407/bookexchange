@@ -50,7 +50,7 @@ public class Read {
                 postData.append("=");
                 postData.append(URLEncoder.encode(params.get(key), "UTF-8"));
             }
-
+            Log.d("[READ] post", "postData: " + postData.toString());
             return postData.toString().getBytes("UTF-8");
         } catch (UnsupportedEncodingException uee) {
             Log.d("[DB] Unsup Encoding ", uee.getMessage());
@@ -80,13 +80,14 @@ public class Read {
             if(urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 BufferedReader connReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 
-                if (objKey == Constants.RESPONSE_KEY_USER || targetUrl == Constants.urlReadBooksForSearch) {
+                if (objKey == Constants.RESPONSE_KEY_USER ) {
                     connReader.readLine();
                     connReader.readLine();
                 } else if(targetUrl == Constants.urlReadBooksForUser || targetUrl == Constants.urlReadRequestsForUser) {
                     connReader.readLine();
                 }
                 String response = connReader.readLine();
+                Log.d("[READ]", "resp:" + response);
                 JSONObject respJson = new JSONObject(response);
                 String success = respJson.getString(Constants.RESPONSE_KEY_SUCCESS);
                 if (success.equalsIgnoreCase("1")) {
