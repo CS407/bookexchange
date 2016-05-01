@@ -1,5 +1,6 @@
 package com.cs407.bookexchange.connectors.books;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -21,6 +22,7 @@ public class GetPendingRequestsForUserConnector extends AsyncTask<HashMap<String
     private Context context;
     private PendingRequestsAdapter adapter;
     private ListView listView;
+    private ProgressDialog progressDialog;
 
     public GetPendingRequestsForUserConnector(Context _context, PendingRequestsAdapter _adapter, ListView _listView) {
         context = _context;
@@ -31,10 +33,19 @@ public class GetPendingRequestsForUserConnector extends AsyncTask<HashMap<String
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("Getting all books you're interested in...");
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
     }
 
     @Override
     protected void onPostExecute(ArrayList<Object> objects) {
+        super.onPostExecute(objects);
+        progressDialog.dismiss();
+
         if(objects == null) {
             Log.d("[GPRFUC]", "An error occurred when executing the query.");
         }
@@ -45,8 +56,6 @@ public class GetPendingRequestsForUserConnector extends AsyncTask<HashMap<String
         }
         adapter = new PendingRequestsAdapter(context, books);
         listView.setAdapter(adapter);
-
-        super.onPostExecute(objects);
     }
 
     @Override

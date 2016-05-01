@@ -36,8 +36,6 @@ public class SearchActivity extends AppCompatActivity {
     String search_ISBN;
 
     private Button searchBtn;
-    private Button sellerManagerBtn;
-    private Button pendingRequestsBtn;
 
     private List<ItemSlideMenu> listSliding;
     private SlidingMenuAdapter adapter;
@@ -49,24 +47,6 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
-        sellerManagerBtn = (Button)findViewById(R.id.btnSellerManagerSearchActivity);
-        sellerManagerBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent in = new Intent(SearchActivity.this, SellerManagerActivity.class);
-                startActivity(in);
-            }
-        });
-
-        pendingRequestsBtn = (Button)findViewById(R.id.btnPendingRequestsSearchActivity);
-        pendingRequestsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SearchActivity.this, PendingRequestsActivity.class);
-                startActivity(intent);
-            }
-        });
-
 
         //KAD
         TextView ISBNText = (TextView) findViewById(R.id.numISBN);

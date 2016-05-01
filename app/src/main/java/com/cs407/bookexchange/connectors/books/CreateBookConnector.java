@@ -1,8 +1,10 @@
 package com.cs407.bookexchange.connectors.books;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import com.cs407.bookexchange.db.Constants;
 import com.cs407.bookexchange.db.Create;
@@ -17,6 +19,7 @@ import java.util.HashMap;
 public class CreateBookConnector extends AsyncTask<HashMap<String, String>, Void, String> {
 
     private Context context;
+    private ProgressDialog progressDialog;
 
     public CreateBookConnector(Context _context) {
         context = _context;
@@ -25,12 +28,21 @@ public class CreateBookConnector extends AsyncTask<HashMap<String, String>, Void
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setTitle("Creating the new listing...");
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
     }
 
     @Override
     protected void onPostExecute(String retVal) {
-        if(retVal != null) {
-            ((Activity)context).finish();
+        super.onPostExecute(retVal);
+        progressDialog.dismiss();
+
+        if(retVal == null) {
+            Toast.makeText(context, "Listing creation failed", Toast.LENGTH_LONG).show();
         }
 
         super.onPostExecute(retVal);

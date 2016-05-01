@@ -26,29 +26,12 @@
             android:hint="ISBN For Search" />
 
         <Button
-            android:id="@+id/btnSellerManagerSearchActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/btnSearchSearchActivity"
-            android:onClick="gotoManger"
-            android:text="SELL MANAGER" />
-
-        <Button
             android:id="@+id/btnSearchSearchActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/numISBN"
             android:layout_centerHorizontal="true"
             android:text="Search" />
-
-        <Button
-            android:id="@+id/btnPendingRequestsSearchActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/btnSellerManagerSearchActivity"
-            android:text="PENDING REQUESTS" />
 
         <EditText
             android:id="@+id/searchTitle"

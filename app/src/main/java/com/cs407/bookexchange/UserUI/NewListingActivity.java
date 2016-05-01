@@ -69,6 +69,7 @@ public class NewListingActivity extends AppCompatActivity {
 
                     CreateBookConnector bookConnector = new CreateBookConnector(NewListingActivity.this);
                     bookConnector.execute(params);
+                    finish();
                 }
             }
         });
