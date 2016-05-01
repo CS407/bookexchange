@@ -13,10 +13,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.cs407.bookexchange.R;
 import com.cs407.bookexchange.adapter.SlidingMenuAdapter;
@@ -30,11 +32,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String search_title;
     String search_dept;
     String search_ISBN;
-
+    Spinner staticSpinner;
     private Button searchBtn;
 
     private List<ItemSlideMenu> listSliding;
@@ -52,7 +54,21 @@ public class SearchActivity extends AppCompatActivity {
         TextView ISBNText = (TextView) findViewById(R.id.numISBN);
         TextView searchTitle = (TextView) findViewById(R.id.searchTitle);
 
-        Spinner staticSpinner = (Spinner)findViewById(R.id.deptSpinner);
+        staticSpinner = (Spinner)findViewById(R.id.deptSpinner);
+
+        //KAD make spinner responsive
+        // Creating adapter for spinner
+        ArrayAdapter<CharSequence> dataAdapter = ArrayAdapter.createFromResource(this,
+                R.array.Deptnumber, android.R.layout.simple_spinner_item);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        staticSpinner.setAdapter(dataAdapter);
+
+        staticSpinner.setOnItemSelectedListener(this);
+
 
         search_ISBN = ISBNText.getText().toString();
         search_title = searchTitle.getText().toString();
@@ -184,5 +200,17 @@ public class SearchActivity extends AppCompatActivity {
             transaction.commit();
         }
     }
+
+    //KAD spinner stuff
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        String item = parent.getItemAtPosition(position).toString();
+        search_dept = item;
+    }
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
+    }
+
 }
 

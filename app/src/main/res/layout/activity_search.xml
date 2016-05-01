@@ -52,7 +52,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="15dp"
-            android:entries="@array/Deptnumber" />
+            android:entries="@array/Deptnumber"
+            android:clickable="true" />
 
         <TextView
             android:id="@+id/searchByDept"
