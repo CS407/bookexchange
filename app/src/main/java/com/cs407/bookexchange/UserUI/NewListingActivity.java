@@ -16,7 +16,8 @@ import java.util.HashMap;
 
 public class NewListingActivity extends AppCompatActivity {
 
-    private EditText etTitle, etComments, etISBN, etAuthors, etEdition, etDept, etPrice, etCourseNo;
+    private EditText etTitle, etComments, etISBN, etAuthors, etEdition, etPrice, etCourseNo;
+    private Spinner spnDept;
     private Spinner spnCondition;
     private Button btnAdd;
 
@@ -31,7 +32,7 @@ public class NewListingActivity extends AppCompatActivity {
         spnCondition = (Spinner) findViewById(R.id.spnConditionNewListingActivity);
         etPrice = (EditText) findViewById(R.id.etPriceNewListingActivity);
         etCourseNo = (EditText) findViewById(R.id.etClassNewListingActivity);
-        etDept = (EditText) findViewById(R.id.etDepartmentNewListingActivity);
+        spnDept = (Spinner) findViewById(R.id.spnDepartmentNewListingActivity);
         etISBN = (EditText) findViewById(R.id.etISBNNewListingActivity);
         etEdition = (EditText) findViewById(R.id.etEditionNewListingActivity);
 
@@ -46,7 +47,7 @@ public class NewListingActivity extends AppCompatActivity {
                 if (!etPrice.getText().toString().isEmpty())
                     price = Float.parseFloat(etPrice.getText().toString());
                 String courseno = etCourseNo.getText().toString();
-                String dept = etDept.getText().toString();
+                String dept = spnDept.getSelectedItem().toString();
                 String isbn = etISBN.getText().toString();
                 Integer edition = null;
                 if (!etEdition.getText().toString().isEmpty())
