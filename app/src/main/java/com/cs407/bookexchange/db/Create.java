@@ -82,10 +82,12 @@ public class Create {
             if(urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 BufferedReader connReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 
-                if(objKey == Constants.RESPONSE_KEY_USER)
-                    connReader.readLine(); connReader.readLine();
+                if(objKey == Constants.RESPONSE_KEY_USER) {
+                    connReader.readLine();
+                    connReader.readLine();
+                }
                 String response = connReader.readLine();
-                    JSONObject respJson = new JSONObject(response);
+                JSONObject respJson = new JSONObject(response);
                 String success = respJson.getString(Constants.RESPONSE_KEY_SUCCESS);
                 if (success.equalsIgnoreCase("1")) {
                     String userJson = respJson.getString(objKey);

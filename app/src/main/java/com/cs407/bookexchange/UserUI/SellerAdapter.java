@@ -3,6 +3,7 @@ package com.cs407.bookexchange.UserUI;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,14 @@ public class SellerAdapter extends ArrayAdapter<Book> {
             @Override
             public void onClick(View v) {
                 BuyersDialog buyersDialog = new BuyersDialog(getContext(),getItem(position).get_bookid());
+                buyersDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        Intent in = new Intent(getContext(), SellerManagerActivity.class);
+                        in.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                        getContext().startActivity(in);
+                    }
+                });
                 buyersDialog.setTitle("Interested Buyers");
                 buyersDialog.show();
             }

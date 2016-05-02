@@ -9,7 +9,7 @@ public class Constants {
     public enum CRUDObject {
         BOOK,
         USER,
-        BUYER,
+        BUYER
     };
 
     public static String urlReadBooksForUser = "http://pages.cs.wisc.edu/~ssunny/webserver/get_books_for_user.php";
@@ -30,12 +30,15 @@ public class Constants {
     public static String urlDeleteUser = "";
     public static String urlDeleteBuyer = "";
 
+    public static String urlMakeTransaction = "http://pages.cs.wisc.edu/~ssunny/webserver/make_transaction.php";
+
     public static final String RESPONSE_KEY_SUCCESS = "success";
     public static final String RESPONSE_KEY_USER = "user";
     public static final String RESPONSE_KEY_BOOK = "books";
     public static final String RESPONSE_KEY_BUYER = "buyers";
 
     public static final String FLAG_CALLER_SELLER_MANAGER = "caller_seller_manager";
+    public static final String FLAG_CALLER_MAKE_TRANSACTION = "caller_make_transaction";
 
     public static final String BOOK_SEARCH_STATUS = "book_search_status";
     public static final String BOOKS_RESULTS_KEY= "book_search_results";
