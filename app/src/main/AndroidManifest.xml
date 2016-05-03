@@ -31,6 +31,7 @@
         <activity android:name=".UserUI.SearchActivity" android:label="Search" />
         <activity android:name=".UserUI.NewListingActivity" android:windowSoftInputMode="adjustPan" android:label="Add New Listing" ></activity>
         <activity android:name=".UserUI.ResultsActivity" android:label="Search Results" />
+        <activity android:name=".UserUI.ContactsActivity" android:label="Contacts" />
         <activity android:name=".UserUI.SlidingMenuActivity" />
     </application>
 
