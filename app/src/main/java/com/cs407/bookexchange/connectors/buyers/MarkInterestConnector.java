@@ -33,19 +33,7 @@ public class MarkInterestConnector extends AsyncTask<HashMap<String, String>, Vo
 
     @Override
     protected void onPostExecute(Boolean retVal) {
-        Log.d("[SRC]", "Search " + (retVal.booleanValue() ? "successful" : "failed"));
-        Log.w("[SRC]bookResults:", bookResults.toString());
-
-//        if(retVal.booleanValue()) { //success; we have a list of results
-//TODO test separately: 1. passing array of books
-        Intent resultsIntent = new Intent(context, ResultsActivity.class);
-        resultsIntent.putExtra(Constants.BOOK_SEARCH_STATUS, foundBooks);
-        resultsIntent.putParcelableArrayListExtra(Constants.BOOKS_RESULTS_KEY, bookResults);
-        context.startActivity(resultsIntent);
-//        } else {
-//            //probably just have a message inside ResultsActivity if nothing returned??
-//            Toast.makeText(context, "Search failed.", Toast.LENGTH_LONG).show();
-//        }
+        //TODO
 
         super.onPostExecute(retVal);
     }
@@ -58,18 +46,7 @@ public class MarkInterestConnector extends AsyncTask<HashMap<String, String>, Vo
     @Override
     protected Boolean doInBackground(HashMap<String, String>... params) {
         ArrayList<Object> books = Read.executeRead(Constants.CRUDObject.BOOK, params[0]);
-
-        if (books != null) {
-            Log.w("[SRC] books looks like:", books.toString());
-            foundBooks = true;
-            for(int i = 0; i<books.size(); i++){
-                bookResults.add((Book)books.get(i));
-            }
-            return true;
-        }
-        else {
-            foundBooks = false;
+        //TODO
             return false;
-        }
     }
 }
