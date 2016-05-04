@@ -2,10 +2,14 @@ package com.cs407.bookexchange.UserUI;
 
 import android.app.Activity;
 import android.content.Context;
+import android.media.Image;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,6 +39,19 @@ public class BookAdapter extends ArrayAdapter<Book> {
         this.data = data;
     }
 
+    private void setupButton(ImageButton btn){
+        //set image: 'check' if the user is already marked interested in this book, else 'plus'
+
+        //set on-click listener
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Log.d("BkAdapter", "clicked a list item button!");
+                //call update
+            }
+        });
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
@@ -47,7 +64,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
             holder = new BookHolder();
 
             //Instantiate widgets
-            //holder.imgIcon = (ImageView)row.findViewById(R.id.imgIcon); //KAD TODO maybe have an image, idk
+            //holder.imgIcon = (ImageView)row.findViewById(R.id.imgIcon); //KAD maybe have an image, idk
             holder.txtTitle = (TextView)row.findViewById(R.id.bookTitleAndEd);
             holder.txtAuthors= (TextView)row.findViewById(R.id.bookAuthor);
             holder.txtISBN= (TextView)row.findViewById(R.id.bookISBN);
@@ -55,6 +72,9 @@ public class BookAdapter extends ArrayAdapter<Book> {
             holder.txtPrice= (TextView)row.findViewById(R.id.bookPrice);
             holder.txtCourse= (TextView)row.findViewById(R.id.bookCourse);
             holder.txtComments= (TextView)row.findViewById(R.id.bookComments);
+
+            holder.interestBtn= (ImageButton)row.findViewById(R.id.interestButton);
+            setupButton(holder.interestBtn);
 
             row.setTag(holder);
         }
@@ -80,12 +100,31 @@ public class BookAdapter extends ArrayAdapter<Book> {
     private String getEdStr(Book book){
         String edStr = String.valueOf(book.get_edition());
         char edNum = edStr.charAt(edStr.length() - 1);
-        String suffix;
+        String suffix = "th";
         switch (edNum){
-            case '1':  if (edStr.length() == 1){ suffix = "st"; break;}
-            case '2': if (edStr.length() == 1){ suffix = "nd"; break;}
-            case '3':  if (edStr.length() == 1){ suffix = "rd"; break;}
-            default: suffix = "th";
+            case '1':  if ((edStr.length() >= 2 && edStr.charAt(edStr.length()-2) == '1'))
+            {
+                suffix = "th";
+            } else
+            {
+                suffix = "st";
+            }
+                break;
+            case '2': if (edStr.length() >= 2 && edStr.charAt(edStr.length()-2) == '1')
+            {
+                suffix = "th";
+            } else
+            {
+                suffix = "nd";
+            }
+                break;
+            case '3':  if (edStr.length() >= 2 && edStr.charAt(edStr.length()-2) == '1')
+            {
+                suffix = "th";
+            } else
+            {
+                suffix = "rd";
+            }
                 break;
         }
         return edStr + suffix;
@@ -110,5 +149,6 @@ public class BookAdapter extends ArrayAdapter<Book> {
         TextView txtPrice;
         TextView txtCourse;
         TextView txtComments;
+        ImageButton interestBtn;
     }
 }
