@@ -1,6 +1,5 @@
 package com.cs407.bookexchange.UserUI;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -94,10 +93,10 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
         listSliding=new ArrayList<>();
 
 
-        listSliding.add(new ItemSlideMenu(R.mipmap.ic_launcher,"Pending Requests"));
-        listSliding.add(new ItemSlideMenu(R.mipmap.ic_launcher,"Posted Books"));
-        listSliding.add(new ItemSlideMenu(R.mipmap.ic_launcher,"Contacts"));
-        listSliding.add(new ItemSlideMenu(R.mipmap.ic_launcher,"Logout"));
+        listSliding.add(new ItemSlideMenu(R.mipmap.buyicon,"Pending Requests"));
+        listSliding.add(new ItemSlideMenu(R.mipmap.sellicon,"Posted Books"));
+        listSliding.add(new ItemSlideMenu(R.mipmap.contacticon,"Contacts"));
+        listSliding.add(new ItemSlideMenu(R.mipmap.logouticon,"Logout"));
 
         adapter= new SlidingMenuAdapter(this,listSliding);
         listViewSliding.setAdapter(adapter);
