@@ -3,16 +3,18 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray">
+    android:padding="15dp"
+    android:background="@android:color/white">
 
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:id="@+id/item_img"/>
+        android:id="@+id/item_img"
+        android:padding="5dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:layout_height="wrap_content"
         android:id="@+id/item_title"/>
 
