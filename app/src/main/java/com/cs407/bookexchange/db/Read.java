@@ -25,24 +25,29 @@ public class Read {
 
         ArrayList<Object> readSet = new ArrayList<>();
 
-        switch(_crudobj) {
-            case BOOK:readSet = getBookSet(params);
+        switch (_crudobj) {
+            case BOOK:
+                readSet = getBookSet(params);
                 break;
-            case USER:readSet = getUserSet(params);
+            case USER:
+                readSet = getUserSet(params);
                 break;
-            case BUYER:readSet = getBuyerSet(params);
+            case BUYER:
+                readSet = getBuyerSet(params);
+                break;
+            case CONTACT:
+                readSet = getContactSet(params);
                 break;
         }
 
         return readSet;
     }
 
-    private static byte[] getPostBytes(HashMap<String, String> params)
-    {
+    private static byte[] getPostBytes(HashMap<String, String> params) {
         StringBuilder postData = new StringBuilder();
 
         try {
-            for(String key : params.keySet()) {
+            for (String key : params.keySet()) {
                 if (postData.length() != 0)
                     postData.append("&");
 
@@ -63,7 +68,7 @@ public class Read {
 
         try {
             URL url = new URL(targetUrl);
-            HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
             byte[] postData = getPostBytes(params);
 
@@ -77,13 +82,13 @@ public class Read {
             connWriter.flush();
             connWriter.close();
 
-            if(urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 BufferedReader connReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 
-                if (objKey == Constants.RESPONSE_KEY_USER ) {
+                if (objKey == Constants.RESPONSE_KEY_USER) {
                     connReader.readLine();
                     connReader.readLine();
-                } else if(targetUrl == Constants.urlReadBooksForUser || targetUrl == Constants.urlReadRequestsForUser) {
+                } else if (targetUrl == Constants.urlReadBooksForUser || targetUrl == Constants.urlReadRequestsForUser || targetUrl == Constants.urlReadBuyer || targetUrl == Constants.urlReadContact) {
                     connReader.readLine();
                 }
                 String response = connReader.readLine();
@@ -94,8 +99,28 @@ public class Read {
                     data = new ArrayList<Object>();
 
 
-                    switch (objKey) {
-                        case Constants.RESPONSE_KEY_USER:{
+                    if(objKey == Constants.RESPONSE_KEY_USER) {
+                        String objJson = respJson.getString(objKey);
+                        JSONObject obj = new JSONObject(objJson);
+                        data.add(User.JsonToObj(obj));
+                    } else {
+                        JSONArray array = respJson.getJSONArray(objKey);
+
+                        for (int idx = 0; idx < array.length(); idx++) {
+                            JSONObject obj = array.getJSONObject(idx);
+
+                            switch (objKey) {
+                                case Constants.RESPONSE_KEY_BOOK:data.add(Book.JsonToObj(obj));
+                                    break;
+                                case Constants.RESPONSE_KEY_BUYER:data.add(User.JsonToObj(obj));
+                                    break;
+                                case Constants.RESPONSE_KEY_CONTACT:data.add(Contact.JsonToObj(obj));
+                                    break;
+                            }
+                        }
+                    }
+                    /*switch (objKey) {
+                        case Constants.RESPONSE_KEY_USER: {
                             String objJson = respJson.getString(objKey);
                             JSONObject obj = new JSONObject(objJson);
                             data.add(User.JsonToObj(obj));
@@ -104,7 +129,7 @@ public class Read {
                         case Constants.RESPONSE_KEY_BOOK: {
                             JSONArray array = respJson.getJSONArray(objKey);
 
-                            for(int idx = 0; idx < array.length(); idx++) {
+                            for (int idx = 0; idx < array.length(); idx++) {
                                 JSONObject obj = array.getJSONObject(idx);
                                 data.add(Book.JsonToObj(obj));
                             }
@@ -113,13 +138,17 @@ public class Read {
                         case Constants.RESPONSE_KEY_BUYER: {
                             JSONArray array = respJson.getJSONArray(objKey);
 
-                            for(int idx = 0; idx < array.length(); idx++) {
+                            for (int idx = 0; idx < array.length(); idx++) {
                                 JSONObject obj = array.getJSONObject(idx);
                                 data.add(User.JsonToObj(obj));
                             }
                         }
                         break;
-                    }
+                        case Constants.RESPONSE_KEY_CONTACT: {
+
+                        }
+                        break;
+                    }*/
                 }
                 connReader.close();
             }
@@ -139,15 +168,13 @@ public class Read {
     private static ArrayList<Object> getBookSet(HashMap<String, String> params) {
         String url;
 
-        if(params.containsKey(TableDefs.Books.COLUMN_USERID)) {
-            if(params.containsKey(Constants.FLAG_CALLER_SELLER_MANAGER)) {
+        if (params.containsKey(TableDefs.Books.COLUMN_USERID)) {
+            if (params.containsKey(Constants.FLAG_CALLER_SELLER_MANAGER)) {
                 url = Constants.urlReadBooksForUser;
                 params.remove(Constants.FLAG_CALLER_SELLER_MANAGER);
-            }
-            else
+            } else
                 url = Constants.urlReadRequestsForUser;
-        }
-        else
+        } else
             url = Constants.urlReadBooksForSearch;
 
         return doRead(params, url, Constants.RESPONSE_KEY_BOOK);
@@ -159,5 +186,9 @@ public class Read {
 
     private static ArrayList<Object> getBuyerSet(HashMap<String, String> params) {
         return doRead(params, Constants.urlReadBuyer, Constants.RESPONSE_KEY_BUYER);
+    }
+
+    private static ArrayList<Object> getContactSet(HashMap<String, String> params) {
+        return doRead(params, Constants.urlReadContact, Constants.RESPONSE_KEY_CONTACT);
     }
 }

@@ -49,8 +49,6 @@ public class LoginUserConnector extends AsyncTask<HashMap<String, String>, Void,
         Log.d("[LUC]", "Login " + (retVal.booleanValue()?"successful":"failed"));
 
         if(retVal.booleanValue()) {
-            UserPrefs.writePreference(com.cs407.bookexchange.userprefs.Constants.PREF_CUR_USER_USERNAME, username);
-
             Intent searchIntent = new Intent(context, SearchActivity.class);
             context.startActivity(searchIntent);
 
@@ -70,7 +68,11 @@ public class LoginUserConnector extends AsyncTask<HashMap<String, String>, Void,
         ArrayList<Object> users = Read.executeRead(Constants.CRUDObject.USER, params[0]);
 
         if(users != null && users.size() == 1) {
-            UserPrefs.writePreference(com.cs407.bookexchange.userprefs.Constants.PREF_CUR_USER_ID, ((User)users.get(0)).get_userid());
+            User curUser = (User)users.get(0);
+            UserPrefs.writePreference(com.cs407.bookexchange.userprefs.Constants.PREF_CUR_USER_ID, curUser.get_userid());
+            UserPrefs.writePreference(com.cs407.bookexchange.userprefs.Constants.PREF_CUR_USER_EMAIL,  curUser.get_email());
+            UserPrefs.writePreference(com.cs407.bookexchange.userprefs.Constants.PREF_CUR_USER_PHONE,  curUser.get_phone());
+            UserPrefs.writePreference(com.cs407.bookexchange.userprefs.Constants.PREF_CUR_USER_USERNAME, username);
 
             return true;
         }

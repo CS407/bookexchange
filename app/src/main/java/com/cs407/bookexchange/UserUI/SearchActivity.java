@@ -178,7 +178,8 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
                 startActivity(in);
                 break;
             case 2:
-                fragment=new Fragment1();
+                in = new Intent(getApplicationContext(), ContactsActivity.class);
+                startActivity(in);
                 break;
             case 3:
                 UserPrefs.doLogout();

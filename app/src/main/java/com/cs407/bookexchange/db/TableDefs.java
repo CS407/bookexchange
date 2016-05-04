@@ -39,4 +39,12 @@ public class TableDefs {
         public static final String COLUMN_BOOKID = "bookid";
         public static final String COLUMN_USERID = "userid";
     }
+
+    public static final class Notifs {
+        public static final String TABLE_NAME = "notifs";
+
+        public static final String COLUMN_NOTIFID = "notifid";
+        public static final String COLUMN_USERID = "userid";
+        public static final String COLUMN_NOTIFDATA = "notifdata";
+    }
 }

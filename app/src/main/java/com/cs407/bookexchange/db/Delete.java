@@ -30,7 +30,7 @@ public class Delete {
                 break;
             case USER:retVal = deleteUser(params);
                 break;
-            case BUYER:retVal = deleteBuyer(params);
+            case BUYER:retVal = params.containsKey(Constants.FLAG_CALLER_MAKE_TRANSACTION)?makeTransaction(params):deleteBuyer(params);
                 break;
         }
 
@@ -117,5 +117,10 @@ public class Delete {
         boolean retVal = false;
 
         return retVal;
+    }
+
+    private static boolean makeTransaction(HashMap<String, String> params) {
+        params.remove(Constants.FLAG_CALLER_MAKE_TRANSACTION);
+        return doDelete(Constants.urlMakeTransaction, params);
     }
 }

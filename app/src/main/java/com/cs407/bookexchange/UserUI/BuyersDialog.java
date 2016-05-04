@@ -54,8 +54,13 @@ public class BuyersDialog extends Dialog implements BuyersAdapter.BuyersAdapterN
         emptyTitle = (TextView)findViewById(R.id.tvNegativeDialogBuyers);
         unemptyTitle = (TextView)findViewById(R.id.tvPositiveDialogBuyers);
         buyersList = (ListView)findViewById(R.id.lvBuyersDialogBuyers);
-        buyersAdapter = new BuyersAdapter(getContext(), new ArrayList<User>(), this);
+        buyersAdapter = new BuyersAdapter(getContext(), bookid, new ArrayList<User>(), this);
         buyersList.setAdapter(buyersAdapter);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         ReadBuyersConnector readBuyersConnector = new ReadBuyersConnector(buyersAdapter);
         readBuyersConnector.execute(bookid);

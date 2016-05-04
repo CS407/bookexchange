@@ -8,4 +8,6 @@ public class Constants {
 
     public static String PREF_CUR_USER_USERNAME = "cur_user_username";
     public static String PREF_CUR_USER_ID = "cur_user_userid";
+    public static String PREF_CUR_USER_EMAIL = "cur_user_email";
+    public static String PREF_CUR_USER_PHONE = "cur_user_phone";
 }
