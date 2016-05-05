@@ -26,6 +26,7 @@
     <string name="drawer_opened">Opened</string>
     <string name="drawer_closed">Closed</string>
     <string-array name="Deptnumber">
+        <item>ANY DEPT</item>
         <item>ACCOUNTING</item>
         <item>ACTUARIAL SCIENCE</item>
         <item>AFRICAN LANGUAGES AND LITERATURE</item>
