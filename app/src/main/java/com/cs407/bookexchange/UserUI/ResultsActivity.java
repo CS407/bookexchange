@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -35,7 +36,6 @@ import java.util.List;
 public class ResultsActivity extends AppCompatActivity {
 
     ListView resultsView;
-    ArrayList<Book> books;
     ArrayList<Book> resultBooks;
 
     private List<ItemSlideMenu> listSliding;
@@ -49,7 +49,12 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         resultsView = (ListView)findViewById(R.id.searchResultsList);
-        //books = new ArrayList<Book>(); //add books to test display
+        resultsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("[RESACT]","you clicked book w/ id: " + resultBooks.get(position).get_bookid());
+            }
+        });
 
         Intent searchIntent = getIntent();
         boolean foundBooks = searchIntent.getBooleanExtra(Constants.BOOK_SEARCH_STATUS, false);
@@ -57,7 +62,6 @@ public class ResultsActivity extends AppCompatActivity {
             resultBooks = searchIntent.getParcelableArrayListExtra(Constants.BOOKS_RESULTS_KEY);
             Log.w("{RESACT}", resultBooks.toString());
 
-           // ArrayAdapter<Book> listAdapter = new ArrayAdapter<Book>(this, android.R.layout.simple_list_item_1, resultBooks);
             BookAdapter listAdapter = new BookAdapter(this, R.layout.results_list_item, resultBooks);
             resultsView.setAdapter(listAdapter);
 
@@ -183,4 +187,28 @@ public class ResultsActivity extends AppCompatActivity {
             transaction.commit();
         }
     }
+
+    //KAD
+//    public void markInterestBtnOnClick(View v){
+//    ImageButton btn = (ImageButton) v;
+//    String bkgrndStr = "filled-star";
+//    if(btn.getBackground().equals(this.getResources().getDrawable(R.drawable.abc_btn_rating_star_off_mtrl_alpha))){
+//        bkgrndStr = "open-star";
+//        //change button image
+//        btn.setImageResource(R.drawable.abc_btn_rating_star_on_mtrl_alpha);
+//    }
+//    else{
+//        //change button image
+//        btn.setImageResource(R.drawable.abc_btn_rating_star_off_mtrl_alpha);
+//    }
+//    Log.d("BkAdapter", "clicked a list item button! it's bkgrnd is: " + bkgrndStr);
+//
+//    //call update TODO
+//
+//    //BookHolder selectedBook = (BookHolder) v.getTag();
+//    //Log.d("BkAdapter", "V tag: " + v.getParent();
+//
+//}
+
+
 }

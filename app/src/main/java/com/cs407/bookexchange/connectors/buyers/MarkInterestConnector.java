@@ -9,6 +9,7 @@ import com.cs407.bookexchange.UserUI.ResultsActivity;
 import com.cs407.bookexchange.db.Book;
 import com.cs407.bookexchange.db.Constants;
 import com.cs407.bookexchange.db.Read;
+import com.cs407.bookexchange.db.Update;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +35,7 @@ public class MarkInterestConnector extends AsyncTask<HashMap<String, String>, Vo
     @Override
     protected void onPostExecute(Boolean retVal) {
         //TODO
-
+    Log.d("[MIC]", "retVal: " + retVal);
         super.onPostExecute(retVal);
     }
 
@@ -45,8 +46,8 @@ public class MarkInterestConnector extends AsyncTask<HashMap<String, String>, Vo
 
     @Override
     protected Boolean doInBackground(HashMap<String, String>... params) {
-        ArrayList<Object> books = Read.executeRead(Constants.CRUDObject.BOOK, params[0]);
-        //TODO
-            return false;
+        boolean result = Update.executeUpdate(Constants.CRUDObject.BUYER, params[0]);
+        Log.d("[MIC]", "result: " + result);
+            return result;
     }
 }

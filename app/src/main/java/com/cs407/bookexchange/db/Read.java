@@ -83,7 +83,7 @@ public class Read {
                 if (objKey == Constants.RESPONSE_KEY_USER ) {
                     connReader.readLine();
                     connReader.readLine();
-                } else if(targetUrl == Constants.urlReadBooksForUser || targetUrl == Constants.urlReadRequestsForUser) {
+                } else if(targetUrl == Constants.urlReadBooksForUser || targetUrl == Constants.urlReadRequestsForUser || targetUrl == Constants.urlReadBooksForSearch) {
                     connReader.readLine();
                 }
                 String response = connReader.readLine();
