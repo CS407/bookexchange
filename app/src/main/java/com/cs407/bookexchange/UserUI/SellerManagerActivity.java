@@ -81,8 +81,6 @@ public class SellerManagerActivity extends AppCompatActivity {
         listViewSliding.setAdapter(adapter);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //set title
-        setTitle("Posted Books");
         //item selected
         listViewSliding.setItemChecked(0, true);
         //close menu
