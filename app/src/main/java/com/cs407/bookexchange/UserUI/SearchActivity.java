@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,6 +38,8 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
     String search_ISBN;
     Spinner staticSpinner;
     private Button searchBtn;
+    TextView searchTitle;
+    TextView ISBNText;
 
     private List<ItemSlideMenu> listSliding;
     private SlidingMenuAdapter adapter;
@@ -50,8 +53,8 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
         setContentView(R.layout.activity_search);
 
         //KAD
-        TextView ISBNText = (TextView) findViewById(R.id.numISBN);
-        TextView searchTitle = (TextView) findViewById(R.id.searchTitle);
+        ISBNText = (TextView) findViewById(R.id.numISBN);
+        searchTitle = (TextView) findViewById(R.id.searchTitle);
 
         staticSpinner = (Spinner)findViewById(R.id.deptSpinner);
 
@@ -68,15 +71,16 @@ public class SearchActivity extends AppCompatActivity implements AdapterView.OnI
 
         staticSpinner.setOnItemSelectedListener(this);
 
-
-        search_ISBN = ISBNText.getText().toString();
-        search_title = searchTitle.getText().toString();
-        search_dept= staticSpinner.getSelectedItem().toString();
-
         searchBtn =(Button)findViewById(R.id.btnSearchSearchActivity);
         searchBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 HashMap<String, String> params = new HashMap<String, String>();
+
+                search_ISBN = ISBNText.getText().toString();
+                search_title = searchTitle.getText().toString();
+                search_dept= staticSpinner.getSelectedItem().toString();
+
+                Log.d("SEARCHACT","searchTitle=" + search_title);
 
                 params.put(TableDefs.Books.COLUMN_ISBN, search_ISBN);
                 params.put(TableDefs.Books.COLUMN_TITLE, search_title );
